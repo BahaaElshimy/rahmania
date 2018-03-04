@@ -1,6 +1,6 @@
 package com.rahmania.security;
 
-import com.rahmania.entity.User;
+import com.rahmania.entity.Users;
 import com.rahmania.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -27,7 +27,7 @@ public class UserServiceDetailsImpl implements UserDetailsService {
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByMobileNumberAndActiveIsTrue(username);
+        Users user = userRepository.findByMobileNumberAndActiveIsTrue(username);
 
         if(user== null )
             throw new UsernameNotFoundException("wrong name or password");

@@ -10,17 +10,8 @@ import java.time.LocalDateTime;
 @MappedSuperclass
 public abstract class AbstractEntity implements Serializable {
 
-    @Id
-    @GeneratedValue(
-            strategy = GenerationType.AUTO,
-            generator = "native"
-    )
-    @GenericGenerator(
-            name = "native",
-            strategy = "native"
-    )
+    @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-
 
     private LocalDateTime creationDate;
 

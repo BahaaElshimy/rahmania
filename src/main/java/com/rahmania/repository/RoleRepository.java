@@ -1,7 +1,7 @@
 package com.rahmania.repository;
 
 import com.rahmania.entity.Menue;
-import com.rahmania.entity.Role;
+import com.rahmania.entity.Roles;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -15,10 +15,10 @@ import java.util.List;
 
 
 @Repository
-public interface RoleRepository extends JpaRepository<Role, Long> {
+public interface RoleRepository extends JpaRepository<Roles, Long> {
 
-    Role findByName(String name);
+    Roles findByName(String name);
 
-    @Query("select r.menueSet from Role r where  r.name = :role")
+    @Query("select r.menueSet from Roles r where  r.name = :role")
     List<Menue> loadUserMenue(@Param("role") String role);
 }

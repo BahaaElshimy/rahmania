@@ -2,7 +2,7 @@ package com.rahmania.service;
 
 import com.rahmania.dto.BaseResponse;
 import com.rahmania.dto.user.UserRegisterationDTO;
-import com.rahmania.entity.User;
+import com.rahmania.entity.Users;
 import com.rahmania.exception.RahmaniaException;
 import com.rahmania.security.SecurityService;
 import com.rahmania.service.user.UserService;
@@ -46,7 +46,7 @@ public class RegisterationServiceImpl implements RegisterationService {
         BaseResponse response = new BaseResponse();
         Objects.requireNonNull(session.getAttribute("user"));
         Objects.requireNonNull(session.getAttribute("password"));
-        User user = userService.getUSer((String) session.getAttribute("user"));
+        Users user = userService.getUSer((String) session.getAttribute("user"));
         if (user.getToken().equals(token)) {
             user.setActive(true);
             securityService.autologin(user.getMobileNumber(), (String) session.getAttribute("password"));

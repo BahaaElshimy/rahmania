@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
-public class Student extends User {
+public class Student extends Users {
 
     private Long grade;
 

@@ -4,7 +4,7 @@ import com.rahmania.dto.MenueDTO;
 import com.rahmania.dto.user.UserDTO;
 import com.rahmania.entity.Menue;
 import com.rahmania.entity.Student;
-import com.rahmania.entity.User;
+import com.rahmania.entity.Users;
 import com.rahmania.repository.RoleRepository;
 import com.rahmania.service.user.UserService;
 import com.rahmania.util.Transformer;
@@ -35,7 +35,7 @@ public class MenueServiceImpl implements MenueService {
     @Override
     public List<MenueDTO> loadUserMenue() {
           String role  = "anonymous";
-          User user = null;
+          Users user = null;
         if (!(SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken)  ) {
              user = userService.getUSer(SecurityContextHolder.getContext().getAuthentication().getName());
             role = user.getRole().getName();

@@ -1,8 +1,8 @@
 package com.rahmania.service.user;
 
-import com.rahmania.entity.Role;
+import com.rahmania.entity.Roles;
 import com.rahmania.entity.Student;
-import com.rahmania.entity.User;
+import com.rahmania.entity.Users;
 import com.rahmania.dto.user.UserDTO;
 import com.rahmania.dto.user.UserRegisterationDTO;
 import com.rahmania.repository.RoleRepository;
@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
     public UserDTO saveUser(UserRegisterationDTO userDTO) throws UnsupportedEncodingException {
         Student user = transformer.transform(userDTO, Student.class);
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        Role role = roleRepository.findByName("student");
+        Roles role = roleRepository.findByName("student");
         user.setRole(role);
         user.setToken(generateToken());
 
@@ -67,14 +67,14 @@ public class UserServiceImpl implements UserService {
     //TODO check how to set mapper.xml
     @Override
     public UserDTO retrieveUserByMobile(String mobile) {
-        User user = userRepository.findByMobileNumber(mobile);
+        Users user = userRepository.findByMobileNumber(mobile);
         UserDTO userDTO = transformer.transform(user, UserDTO.class);
         userDTO.setRole(user.getRole().getName());
         return userDTO;
     }
 
     @Override
-    public User getUSer(String mobile) {
+    public Users getUSer(String mobile) {
         return userRepository.findByMobileNumber(mobile);
     }
 

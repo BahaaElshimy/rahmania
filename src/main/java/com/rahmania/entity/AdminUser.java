@@ -3,6 +3,6 @@ package com.rahmania.entity;
 import javax.persistence.Entity;
 
 @Entity
-public class AdminUser extends  User {
+public class AdminUser extends  Users {
 
 }

@@ -8,7 +8,7 @@ import java.util.Set;
 @Entity
 @Inheritance(strategy =InheritanceType.JOINED)
 @Table(uniqueConstraints = { @UniqueConstraint(columnNames = {"mobileNumber"})})
-public  class User extends AbstractEntity {
+public  class Users extends AbstractEntity {
 
     private String token;
 
@@ -26,7 +26,7 @@ public  class User extends AbstractEntity {
     private String password;
 
     @ManyToOne
-    private Role role ;
+    private Roles role ;
 
     public String getName() {
         return name;
@@ -52,11 +52,11 @@ public  class User extends AbstractEntity {
         this.password = password;
     }
 
-    public Role getRole() {
+    public Roles getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(Roles role) {
         this.role = role;
     }
 

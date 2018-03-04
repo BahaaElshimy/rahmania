@@ -2,7 +2,7 @@ package com.rahmania.service.user;
 
 import com.rahmania.dto.user.UserDTO;
 import com.rahmania.dto.user.UserRegisterationDTO;
-import com.rahmania.entity.User;
+import com.rahmania.entity.Users;
 
 import java.io.UnsupportedEncodingException;
 import java.util.List;
@@ -17,5 +17,5 @@ public interface UserService {
 
     UserDTO retrieveUserByMobile(String mobile);
 
-    User getUSer(String mobile);
+    Users getUSer(String mobile);
 }

@@ -1,5 +1,6 @@
 package com.rahmania.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import java.util.HashSet;
@@ -14,11 +15,12 @@ public class Menue  extends  AbstractEntity{
     private String name;
 
     private String url;
-    
-    private boolean disabled;
+
+     @Column( columnDefinition = "boolean default 'false'")
+    private boolean disabled = false;
 
     @ManyToMany(mappedBy = "menueSet")
-    private Set<Role> roleSet = new HashSet<>();
+    private Set<Roles> roleSet = new HashSet<>();
     public String getName() {
         return name;
     }
@@ -35,11 +37,11 @@ public class Menue  extends  AbstractEntity{
         this.url = url;
     }
 
-    public Set<Role> getRoleSet() {
+    public Set<Roles> getRoleSet() {
         return roleSet;
     }
 
-    public void setRoleSet(Set<Role> roleSet) {
+    public void setRoleSet(Set<Roles> roleSet) {
         this.roleSet = roleSet;
     }
 
