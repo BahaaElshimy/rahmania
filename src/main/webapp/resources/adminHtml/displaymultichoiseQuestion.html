@@ -1,0 +1,11 @@
+<div>
+<label>{{item.question}}</label> <a class="edit" ng-click="prepareEditQuestion($index)"><span class="glyphicon glyphicon-edit"></span>   تعديل</a>  <a
+        ng-click="removeQuestion(item.id)" class="trash">  <span class="glyphicon glyphicon-trash"></span> حذف</a><br/>
+<div id="multiChoiseAnswer{{$index}}" style="margin-bottom: 15px">
+    <div id="choices{{$index}}" ng-repeat="item2 in item.answers" style="margin-top: 15px">
+        <input type="radio" name="{{item2.question}}" ng-model="item2.correct" style="width: 63px" value="{{item2.correct}}" ng-checked="{{item2.correct}}"/>
+        <label ng-bind="item2.answer"> <label/> <br/>
+    </div>
+</div>
+
+</div>

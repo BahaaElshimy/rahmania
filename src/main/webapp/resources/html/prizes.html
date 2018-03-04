@@ -1,0 +1,23 @@
+<style type="text/css">
+    input {
+        height: 15px;
+        width: 15px;
+    }
+
+    form h4, form p {
+        text-align: right;
+    }
+</style>
+
+
+<div class="formulaire">
+    <form>
+
+        <h3>مسابقة نعمة الاجتماع ونبذ الافتراق</h3>
+        <h3>جوائز المسابقة</h3>
+        <img style="width: 50%" src="resources/image/competitionImage.jpg">
+        <p ng-repeat=" item in prizes">- {{item.description}}</p>
+        <br/>
+    </form>
+</div>
+

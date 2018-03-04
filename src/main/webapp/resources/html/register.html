@@ -1,0 +1,28 @@
+   <div>
+			<img id="barre" src="/resources/assets/images/12.png"/>
+			<img id="barre_phone" src="/resources/assets/images/informations.png"/>
+			<div class="triangle"></div>
+			<div class="formulaire">
+				<form  name="registerationForm" id="registerForm" novalidate autocomplete="off" data-parsley-validate="" >
+
+					<p>
+                        <label for="phone">رقم الجوال</label><span class="requried">*</span> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="tel" ng-blur="isExist()" ng-model="req.mobileNumber" name="phone" id="phone" minlength="10" maxlength="10" required="" data-parsley-pattern="{{mobileNumber}}" data-parsley-error-message="رقم الجوال مكون من 10أرقام ويبدأ ب 05" />
+						<br><span class="danger" ng-show="userExist">رقم الجوال مستخدم سابقا</span>
+                    </p>
+					<p>
+                        <label for="pseudo">اسم المستخدم</label> <span class="requried">*</span>  :
+                        <input type="text" name="name" id="name" ng-model="req.name" required  data-parsley-error-message="هذا الحقل مطلوب"/></p>
+					<p>
+                        <label for="password">كلمة السر</label> <span class="requried">*</span>  : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="password" ng-model="req.password"  minlength="8" name="password" id="password" required  data-parsley-error-message="كلمة المرور يجب ان تكون على الاقل مكونة من 8 احرف وارقام"/></p>
+					<p>
+                        <label for="password"> تأكيد كلمة السر </label> <span class="requried">*</span>  :&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="password" name="confirmpassword" id="confirmpassword" ng-model="req.confirmpassword" required   data-parsley-error-message="هذا الحقل مطلوب"/>
+                    </p>
+					<span ng-show="req.password != req.confirmpassword" class="danger" style="margin-left: 162px;" >غير متطابقة مع كلمة المرور</span>
+
+					<p><button type="submit" ng-disabled="userExist">تسجيل</button> </p>
+			</form>
+			</div>
+   </div>

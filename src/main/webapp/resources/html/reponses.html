@@ -1,0 +1,138 @@
+<style>
+
+	form p{
+		text-align: right;
+	}
+	#content{
+		padding: 40px 10%;
+	}
+	#content p{
+		text-align: right;
+	}
+
+</style>
+
+<div id="content">
+	<div class="formulaire">
+		<div id="statut">تصنيف</div>
+		<form >
+			<p>اختيار مشاركين بمجموع درجات <input style="text-align: center;" ng-model="searchGrade" type="text" /> فما فوق.</p>
+
+
+		</form>
+	</div>
+	<div id="menu1">
+		<a ng-click="loadStudents()">جميع المتسابقين</a>
+		<a ng-click="getPartcipated()">المشاركين</a>
+		<a ng-click="getCandidate()" style="background-color: #e0cb98;">المرشحين</a>
+	</div>
+	<div class="formulaire">
+		<form id="table">
+			<div class="control-button">
+		    	<button  ng-click="checkAllStudents()">
+					اختيار الكل
+				</button>
+				<button ng-click="moveToParticipated()">نقل إلى "المشاركين"</button>
+				<button ng-click="moveToCandidate()">نقل إلى "المرشحين"</button>
+				<button ng-click="elimenate()">استبعاد</button>
+				<button ng-click="endTest()">إيقاف الامتحان</button>
+			</div>
+
+			<div  >
+
+			<table class="table table-striped table-bordered"  style="margin-top: 30px">
+				<thead class="thead-light ">
+				<tr>
+					<th style="text-align: center;">اختر</th>
+					<th style="text-align: center;">الاسم</th>
+					<th style="text-align: center;">النتيجة</th>
+					<th style="text-align: center;">الاجابات</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr ng-repeat="student in students | filter: greaterThan('grade', searchGrade)">
+					<td ><input type="checkbox" name="aa"ng-model="studentsCheckBoxes[$index]" ng-change="addStudentId($index)" /></td>
+					<td >{{student.name}}</td>
+					<td >{{student.grade}}</td>
+					<td ><a href="#/studentAnswers/{{student.id}}">	اجابات الطالب</a></td>
+				</tr>
+				</tbody>
+			</table>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="elimnateModal" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-body">
+				<p>تم  استبعاد الطلاب بنجاح</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">إغلاق</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="particpateModal" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-body">
+				<p>تم نقل الطلاب الى المرشحين بنجاح</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default"  data-dismiss="modal">إغلاق</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div class="modal fade" id="chooseStudent" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-body">
+				<p>يجب اختيار الطلاب اوﻻ</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default"  data-dismiss="modal">إغلاق</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
+
+<div class="modal fade" id="endTest" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-body">
+				<p>تم ايقاب الامتحان بنجاح</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default"  data-dismiss="modal">إغلاق</button>
+			</div>
+		</div>
+
+	</div>
+</div>

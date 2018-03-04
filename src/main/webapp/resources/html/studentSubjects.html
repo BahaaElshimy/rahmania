@@ -1,0 +1,26 @@
+<div class="formulaire">
+    <table>
+        <thead>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th style="text-align: center;">م</th>
+            <th style="text-align: center;">اسم المادة</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in studentSubjects">
+            <td scope="row">{{$index +1}}</td>
+            <td> {{item.name}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>

@@ -1,0 +1,67 @@
+<div class="formulaire">
+
+
+
+    <form id="addsubject"  novalidate ng-submit="" autocomplete="off" enctype="multipart/form-data">
+        <div id="table" style="float: right;">
+           <div class="container-fluid">
+               <div class="row">
+
+                   <div class="col-md-6" ng-show="bad(subject.videoPath)">
+                       <label style="color:black">  فيديو المادة </label><span class="requried">*</span>
+                       <input class="form-control" accept="video/mp4,video/x-m4v,video/*" type="file" file-model = "file" id="subjectVideoUploader" placeholder="Upload File" required data-parsley-error-message="من فضلك اختر فيديو"/>
+                   </div>
+
+                   <div class="col-md-6" ng-show="!bad(subject.videoPath)">
+                       <label style="color:black">  فيديو المادة </label><br>
+                       <a ng-click="deleteFile()"> <span class="glyphicon glyphicon-trash"></span> </a>
+                   </div>
+
+                   <div class="col-md-6">
+                       <label style="color:black"> اسم المادة </label><span class="requried">*</span>
+                       <input type="text" name="tab" ng-model="subject.name"  required data-parsley-error-message="هذا الحقل مطلوب " >
+                   </div>
+
+
+               </div>
+               </div>
+            <button type="submit"  ng-show="isAdd">اضافة</button>
+            <button type="submit"  ng-hide="isAdd" > تعديل</button><br>
+
+
+        </div>
+    </form>
+
+
+    <table>
+        <thead>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th style="text-align: center;">#</th>
+            <th style="text-align: center;">اسم المادة</th>
+            <th style="text-align: center;"> </th>
+            <th style="text-align: center;"> </th>
+            <th style="text-align: center;"> </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in subjects">
+            <td scope="row">{{$index +1}}</td>
+            <td> {{item.name}}</td>
+            <td><a ng-click="prepareEditSubject($index)"> تعديل<span class="glyphicon glyphicon-edit"></span> </a></td>
+            <td><a class=".btn-danger" ng-click="deleteSubject(item.id)">حذف<span class="glyphicon glyphicon-trash"></span> </a> </td>
+            <td><a class=".btn-danger" href="#/questions/{{item.id}}">تعيين الاسئلة</a> </span> </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+</div>

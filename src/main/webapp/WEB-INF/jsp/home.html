@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>مسابقة الرحمانية</title>
+
+    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="resources/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="resources/css/selectize.css" rel="stylesheet">
+    <link href="resources/css/style.css" rel="stylesheet">
+    <link href="resources/css/css.css" rel="stylesheet">
+    <link href="resources/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <!-- Bootstrap core CSS -->
+
+
+</head>
+<!-- NAVBAR
+================================================== -->
+<body ng-app="rahmania">
+
+<header>
+    <img id="logo" src="/resources/assets/images/4.png"/>
+<!--    <div ng-if="authenticated">
+        <div id="user" class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+            <a class="fa fa-user"></a>
+        </div>
+        <div class="list" class="dropdown-menu list" aria-labelledby="dropdownMenu2">
+            <a class="dropdown-item" type="button" ng-click="logout()"><p>تسجيل الخروج</p></a>
+            <a class="dropdown-item"><p>تغيير كلمة المرور</p></a>
+        </div>
+    </div>-->
+
+
+
+    <div ng-if="authenticated">
+        <div class="dropdown"  >
+                <a class="dropdown-toggle"  id="user"  type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="fa fa-user"></span>
+                    <span  class="fa fa-ellipsis-v"></span>
+                </a>
+                <div class="dropdown-menu list" class="list" aria-labelledby="dropdownMenu2">
+                    <p ><a class="dropdown-item" type="button" s>تغير كلمة المرور</a> </p>
+                    <a class="dropdown-item" ng-click="logout()" class="fa fa-user" logout type="button"> <p>  خروج</p> </a>
+                </div>
+            </div>
+    </div>
+</header>
+
+
+<img id="separator" src="/resources/assets/images/3.png"/>
+<section>
+    <div id="menu">
+        <a ng-repeat="item in menueSet" ng-href="#{{item.url}}">{{item.name}}</a>
+    </div>
+
+
+    <!-- routing -->
+
+    <div id="content" ng-view></div>
+
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div id="social">
+        <div>
+            <p>
+                <a class="fa fa-whatsapp" href="tel:0530544944"></a>
+            </p>
+            <p>0530544944</p>
+        </div>
+        <div>
+            <p>
+                <a class="fa fa-instagram" href="http://instagram.com/alrahmanyah"></a>
+                <a class="fa fa-youtube" href="http://youtube.com/alrahmanyah"></a>
+                <a class="fa fa-snapchat" href="http://snapchat.com/alrahmanyah"></a>
+                <a class="fa fa-google-plus" href="http://googleplus.com/alrahmanyah"></a>
+                <a class="fa fa-twitter" href="http://twitter.com/alrahmanyah"></a>
+            </p>
+            <p>alrahmanyah</p>
+        </div>
+    </div>
+    <img id="logo_1" src="/resources/assets/images/10.png"/>
+</footer>
+<script src="/resources/js/jquery-3.2.1.min.js"></script>
+<script src="/resources/js/selectize.min.js"></script>
+
+<script src="./webjars/angularjs/1.4.8/angular.js"></script>
+<script src="./webjars/angularjs/1.4.8/angular-resource.js"></script>
+<script src="./webjars/angularjs/1.4.8/angular-route.js"></script>
+<script src="/resources/js/angular-sanitize.min.js"></script>
+<script src="/resources/js/bootstrap.min.js"></script>
+
+
+<script src="/resources/js/ng-pattern-restrict.js"></script>
+<script src="/resources/js/angular-selectize.js"></script>
+<script src="/resources/js/parsley.min.js"></script>
+
+<script src="/resources/app/app.module.js"></script>
+<script src="/resources/app/service.js"></script>
+<script src="/resources/app/app.directives.js"></script>
+
+</body>
+</html>

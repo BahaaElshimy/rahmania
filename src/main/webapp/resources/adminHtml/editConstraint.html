@@ -1,0 +1,50 @@
+
+<div class="formulaire">
+
+
+    <form id="addRulef" name="addRuleform" novalidate ng-submit="addRule()" autocomplete="off" >
+
+        <div id="table">
+
+            <div class="form-group">
+                <label style="color:black"> الشرط </label><span class="requried">*</span>
+                <input type="text" name="rule" ng-model="rule.description" ng-pattern-restrict="{{arabicOnly}}" required/>
+                <span ng-show=" addRuleform.rule.$error.required" class="danger" style="margin-left: 162px;">هذا الحقل مطلوب باللغة العربية </span>
+            </div>
+
+
+
+            <button type="submit" ng-disabled="addRuleform.$invalid" ng-show="isAddRule">اضافة</button>
+            <button type="button" ng-disabled="addRuleform.$invalid" ng-show="!isAddRule" ng-click="editRule(rule)"> تعديل</button><br>
+
+
+        </div>
+    </form>
+
+    <div>
+
+        <form>
+            <h3>مسابقة نعمة الاجتماع ونبذ الافتراق</h3>
+            <h3>شروط  المسابقة</h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th style="text-align: center;">#</th>
+                    <th style="text-align: center;">الشرط</th>
+                    <th style="text-align: center;"> </th>
+                    <th style="text-align: center;"> </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in rules">
+                    <td scope="row">{{$index +1}}</td>
+                    <td> {{item.description}}</td>
+                    <td><a ng-click="prepareEditRule($index)"> تعديل<span class="glyphicon glyphicon-edit"></span> </a></td>
+                    <td><a class=".btn-danger" ng-click="deleteRule(item.id)">حذف <span class="glyphicon glyphicon-trash"></span> </a></td>
+                </tr>
+
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>

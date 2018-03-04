@@ -1,0 +1,20 @@
+
+<div class="formulaire">
+<form id="addAboutform" name="addAboutform" novalidate ng-submit="addAbout()" autocomplete="off" >
+
+    <div id="table">
+
+        <div class="form-group">
+            <label style="color:black"> النبذة </label><span class="requried">*</span><br>
+            <textarea type="" name="about" ng-model="about.about" ng-pattern-restrict="{{arabicOnly}}" required/><br>
+            <span ng-show=" addAboutform.about.$error.required" class="danger" style="margin-left: 162px;">هذا الحقل مطلوب باللغة العربية </span>
+        </div>
+
+        <button id="button1" type="submit" ng-disabled="addAboutform.$invalid" ng-show="bad(about.id)">اضافة</button>
+        <button id="button2" ng-disabled="addAboutform.$invalid" ng-show="!bad(about.id)" ng-click="editAbout(about)"> تعديل</button><br>
+
+
+    </div>
+</form>
+
+</div>

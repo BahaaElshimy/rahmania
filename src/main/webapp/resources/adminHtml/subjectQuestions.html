@@ -1,0 +1,57 @@
+<div class="formulaire">
+    <form name="addquestion" id="testQuestion" novalidate autocomplete="off" data-parsley-validate>
+        <label>نوع السؤال</label> <span class="requried">*</span>
+        <input placeholder='اختر' selectize="" options='quetionOptions' config="questionConfig" ng-model="type"
+               ng-disabled='disable' required='true'/>
+
+        <label>عنوان السؤال </label>
+        <input type="text"  ng-model="question.title" name="title" ng-pattern-restrict="{{arabicOnly}}"/>
+
+        <div ng-show="!bad(type)">
+
+            <span class="requried" ng-show="type=='fillGap'">ضع مكان الفراغ علامة + </span><br>
+            <label>السؤال </label> <span class="requried">*</span>
+            <input type="text" required ng-model="question.question" ng-pattern-restrict="{{arabicOnly}}" data-parsley-error-message="هذا الحقل مطلوب"/>
+        </div>
+
+        <div id="multiChoiseAnswer" style="margin-bottom: 15px" ng-show=" type== 'multichoice'">
+
+            <div id="choices" ng-repeat="item in question.answers" style="margin-top: 15px">
+                <input type="radio" name="question.question" ng-model="item.correct" value="true"
+                       style="width: 63px"  ng-checked="{{item.correct}}" ng-change="resetCorrectAnswer($index)"/>
+                <input type="text" ng-model="item.answer" required ng-pattern-restrict="{{arabicOnly}}"/> <a
+                    ng-hide="bad(item.answer)" ng-click="removeAnswer()">حذف</a> <br>
+            </div>
+
+            <div id="newchoice" style="margin-top: 15px">
+                <input type="radio" name="question.question" ng-model="tempAnswer.correct" value="true" style="width: 63px"/>
+                <input type="text" ng-model="tempAnswer.answer" ng-pattern-restrict="{{arabicOnly}}" name="temp" />
+                <a ng-hide="bad(tempAnswer.answer)" ng-click="addAnswer()"><span
+                        class="glyphicon glyphicon-plus"> </span></a>
+            </div>
+        </div>
+
+
+        <button type="submit" ng-show="isAddQuestion" ng-if="!bad(type)"
+                ng-disabled="type=='multichoice'&& question.answers.length<1 "> إضافة السؤال
+        </button>
+        <button type="button " ng-show="!isAddQuestion" ng-click="editQuestion()"
+                ng-disabled="type=='multichoice' && question.answers.length<1"> تعديل السؤال
+        </button>
+
+    </form>
+
+
+    <div ng-repeat="item in questions track by $index">
+        <div ng-if="item.type=='multichoice'">
+            <display-multi main-id="$index" item="item"></display-multi>
+        </div>
+        <div ng-if="item.type=='fillGap'">
+             <display-fill></display-fill>
+        </div>
+        <div ng-if="item.type=='wQuestion'">
+            <label>{{item.question}}</label> <a ng-click="prepareEditQuestion($index)">تعديل</a> <span></span> <a
+                ng-click="removeQuestion(item.id)"> حذف</a><br/>
+        </div>
+    </div>
+</div>

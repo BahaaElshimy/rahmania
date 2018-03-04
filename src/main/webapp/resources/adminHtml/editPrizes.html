@@ -1,0 +1,61 @@
+
+<div class="formulaire">
+
+    <form novalidate autocomplete="off" name="filetest">
+    <div class="form-group" >
+        <div class="col-sm-5" style="float: right">
+            <input class="form-control" type="file" file-model = "file" placeholder="Upload File" required/>
+            <button id="blueButton" type="button" ng-click="doUploadImage()"> رفع الصورة</button>
+        </div>
+    </div>
+
+</form>
+
+    <form id="addPrizfore" name="addPrizeform" novalidate ng-submit="addPrize()" data-parsley-validate="" autocomplete="off" >
+
+    <div id="table" style="margin-top: 70px">
+
+        <div class="form-group">
+        <label style="color:black"> الجائزة </label><span class="requried">*</span>
+        <input type="text" name="prize" ng-model="prize.description" ng-pattern-restrict="{{arabicOnly}}" required/>
+        <span ng-show=" addPrizeform.prize.$error.required" class="danger" style="margin-left: 162px;">هذا الحقل مطلوب باللغة العربية </span>
+        </div>
+
+
+
+        <button type="submit" ng-disabled="addPrizeform.$invalid" ng-show="isAddPrize">اضافة</button>
+        <button type="button" ng-disabled="addPrizeform.$invalid" ng-show="!isAddPrize" ng-click="editPrize(prize)"> تعديل</button><br>
+
+
+    </div>
+</form>
+
+<div>
+
+    <form>
+        <h3>جوائز المسابقة</h3>
+        <div ng-if="">
+        <img style="width: 50%" ng-src="resources/image/competitionImage.jpg">
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th style="text-align: center;">#</th>
+                <th style="text-align: center;">الجائزة</th>
+                <th style="text-align: center;"> </th>
+                <th style="text-align: center;"> </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in prizes">
+                <td scope="row">{{$index +1}}</td>
+                <td> {{item.description}}</td>
+                <td><a ng-click="prepareEditPrize($index)"> تعديل<span class="glyphicon glyphicon-edit"></span> </a></td>
+                <td><a class=".btn-danger" ng-click="deletePrize(item.id)">حذف <span class="glyphicon glyphicon-trash"></span> </a></td>
+            </tr>
+
+            </tbody>
+        </table>
+    </form>
+</div>
+</div>
