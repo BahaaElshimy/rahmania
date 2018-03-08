@@ -80,10 +80,11 @@ section h2{
     padding: 20px;
     border: 1px solid #025056;
     color: #025056;
-    width: 80%;
+    width: 90%;
     margin: auto;
     margin-bottom: 10px;
     font-family: 'Cairo', sans-serif;
+	height: 280;
 }
 #menu{
 	margin: -5px auto;
@@ -115,6 +116,7 @@ section h2{
 #content p{
 	margin-top: 20px;
 	text-align: center;
+	font-size: 22px !important;
 }
 #content a{
 	color: #025056;
@@ -132,11 +134,11 @@ section h2{
     color: #d9d9d8;
 }
 footer{
-	background-color: #bbbbba;
+	background-color: #bbbba82e;
 	width: -webkit-fill-available;
     padding: 10px;
     position: absolute;
-    height: 80px;
+    height:  107px;
 }
 #logo_1{
 	height: 70px;
@@ -149,6 +151,7 @@ footer{
 	margin-right: 10px;
     display: flex;
     text-align: center;
+	margin-top: 22px;
 }
 #social div{
 	margin-right: 20px;
@@ -208,7 +211,7 @@ button[type="submit"]{
 	font-family: 'Cairo', sans-serif;
 	background: #06464d;
     color: #fff;
-    font-size: 14px;
+    font-size: 20px;
     width: 100px;
     height: 35px;
 	border-radius: 0%;
@@ -324,17 +327,17 @@ button span{
 
 #button1{
     background-color: #025056;
-    border-radius: 20px;
+    border-radius: 0px;
     width: 100px;
 }
 #button2{
     background-color: #025056;
-    border-radius: 20px;
+    border-radius: 0px;
     width: 100px;
 }
 #button3{
     background-color: #025056;
-    border-radius: 20px;
+    border-radius: 0px;
     width: 100px;
 }
 
@@ -528,4 +531,19 @@ trash{
 
 .modal-footer button{
  float: left;
+}
+.submitref{
+	margin-right: 3px;font-family: 'Cairo' , sans-serif !important;
+	border: 0;  color: #fff;
+	font-size: 14px; width: 300px;height: 50px;
+	border-radius: 0% !important;
+	background: #06464d !important;
+	background-color: #025056  !important;
+	color: #ffffff !important;
+}
+
+
+#about{
+	text-align: right !important;
+	font-size: 27px;
 }

@@ -1,8 +1,9 @@
 <div class="formulaire">
     <form method="get" action="home.html">
-        <img style="width: 50%" src="resources/assets/images/13.png">
-        <h3>شروط المسابقة</h3>
-        <p ng-repeat="item in rules">- {{item.description}}</p>
+       <!-- <img style="width: 50%" src="resources/assets/images/13.png">-->
+        <h3 style="font-size: 36px">شروط المسابقة</h3>
+        <hr>
+        <p ng-repeat="item in rules" style="text-align: right !important;">- {{item.description}}</p>
 
     </form>
 </div>

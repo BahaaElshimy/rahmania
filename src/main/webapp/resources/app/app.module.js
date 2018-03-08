@@ -266,7 +266,7 @@
                     $rootScope.routeBasedUser();
                 })
             }).error(function (data) {
-                $scope.errorMessage = "رقم الموبايل / كلمة المرور خطأ",
+                $scope.errorMessage = "رقم الجوال/كلمة المرور خطأ",
                     $scope.password = "";
             });
         };

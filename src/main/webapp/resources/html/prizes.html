@@ -12,10 +12,9 @@
 
 <div class="formulaire">
     <form>
-
-        <h3>مسابقة نعمة الاجتماع ونبذ الافتراق</h3>
-        <h3>جوائز المسابقة</h3>
-        <img style="width: 50%" src="resources/image/competitionImage.jpg">
+        <h3 style="font-size: 36px !important;">جوائز المسابقة</h3>
+        <hr>
+        <img style="width: 50%" ng-src="{{resources/image/competitionImage.jpg}}">
         <p ng-repeat=" item in prizes">- {{item.description}}</p>
         <br/>
     </form>

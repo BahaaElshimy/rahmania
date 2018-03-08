@@ -11,7 +11,7 @@
 
             <span class="requried" ng-show="type=='fillGap'">ضع مكان الفراغ علامة + </span><br>
             <label>السؤال </label> <span class="requried">*</span>
-            <input type="text" required ng-model="question.question" ng-pattern-restrict="{{arabicOnly}}" data-parsley-error-message="هذا الحقل مطلوب"/>
+            <textarea style="height: 92px !important;width: 60%" type="text" required ng-model="question.question" ng-pattern-restrict="{{arabicOnly}}" data-parsley-error-message="هذا الحقل مطلوب"/>
         </div>
 
         <div id="multiChoiseAnswer" style="margin-bottom: 15px" ng-show=" type== 'multichoice'">

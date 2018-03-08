@@ -1,15 +1,15 @@
 
 <div class="formulaire">
 
-    <form novalidate autocomplete="off" name="filetest">
     <div class="form-group" >
         <div class="col-sm-5" style="float: right">
-            <input class="form-control" type="file" file-model = "file" placeholder="Upload File" required/>
-            <button id="blueButton" type="button" ng-click="doUploadImage()"> رفع الصورة</button>
+
+            <input class="form-control"  type="file" file-model = "file"id="imageUploader" placeholder="Upload File"  onchange="angular.element(this).scope().doUploadImage()"  required data-parsley-error-message="من فضلك اختر فيديو"/>
+
         </div>
     </div>
 
-</form>
+
 
     <form id="addPrizfore" name="addPrizeform" novalidate ng-submit="addPrize()" data-parsley-validate="" autocomplete="off" >
 
