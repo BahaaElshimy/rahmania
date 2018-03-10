@@ -23,9 +23,9 @@ public class RahmaniaExceptionHandler  extends ResponseEntityExceptionHandler{
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @ExceptionHandler({RahmaniaException.class})
-    public final ResponseEntity<String> handleException(RahmaniaException ex, WebRequest request) {
+    public final ResponseEntity<FieldErrorDTO> handleException(RahmaniaException ex, WebRequest request) {
         ex.printStackTrace();
-        return new ResponseEntity<String>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<FieldErrorDTO>( new FieldErrorDTO(ex.getMessage() ,ex.getDescription()), HttpStatus.BAD_REQUEST);
     }
 
 

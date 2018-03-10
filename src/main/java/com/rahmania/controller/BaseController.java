@@ -57,6 +57,15 @@ public class BaseController {
         return new ResponseEntity<AboutDTO>(settingService.getAbout(), HttpStatus.OK);
     }
 
+
+    @PostMapping("/forgetPassword")
+    public ResponseEntity<String> changePassword(@RequestBody ConstraintDTO constraintDTO, @PathVariable("id") Long id) throws Exception {
+        settingService.editConstraing(constraintDTO, id);
+        return new ResponseEntity<String>(HttpStatus.ACCEPTED);
+    }
+
+
+
 /*    @RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
     public String login(){
         return "login";

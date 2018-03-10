@@ -7,6 +7,31 @@
         $rootScope.authenticated = false;
         $rootScope.mobileNumber = '/[0][5][0-9]{8}$/';
 
+
+        $rootScope.changePasswordErrorMessage ="";
+
+        var changePasswordForm = $('#changePasswordForm').parsley();
+        $('#changePasswordForm').parsley().on('form:validated', function () {
+            console.log(changePasswordForm.fields);
+            if (changePasswordForm.isValid()) {
+                rahmaniaService.changePassword($rootScope.changeReq).success(function (data) {
+                   if($rootScope.bad(data.message)){
+                       $rootScope.changeReq={};
+                       $rootScope.changePasswordErrorMessage=""
+                       $("#changePasswordModal").modal('hide');
+                   }else
+                    $rootScope.changePasswordErrorMessage =data.message;
+                }).error(function (data) {
+                    $rootScope.changePasswordErrorMessage =data;
+                })
+            }
+        });
+
+        $rootScope.resetChangePassword= function () {
+            $rootScope.changeReq={};
+            $("#changePasswordModal").modal('hide');
+        }
+
         // TODO password regex
         $rootScope.menueSet = [];
         $rootScope.retriveMenu = function () {

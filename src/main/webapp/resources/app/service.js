@@ -324,6 +324,14 @@
                     method: 'DELETE',
                     headers: 'Accept:application/json',
                 });
+            },
+            changePassword : function (req) {
+                return $http({
+                    url: 'api/settings/resetPassword',
+                    method: 'PUT',
+                    headers: 'Accept:application/json',
+                    data:req
+                });
             }
         }
     }]);

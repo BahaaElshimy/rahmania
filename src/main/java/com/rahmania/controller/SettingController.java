@@ -1,5 +1,7 @@
 package com.rahmania.controller;
 
+import com.rahmania.dto.user.ChangePasswordDTO;
+import com.rahmania.exception.FieldErrorDTO;
 import com.rahmania.model.AboutDTO;
 import com.rahmania.model.ConstraintDTO;
 import com.rahmania.model.PrizeDTO;
@@ -89,9 +91,8 @@ public class SettingController {
     }
 
     @PutMapping("/resetPassword")
-    public ResponseEntity<String> changePassword(@RequestBody ConstraintDTO constraintDTO, @PathVariable("id") Long id) throws Exception {
-        settingService.editConstraing(constraintDTO, id);
-        return new ResponseEntity<String>(HttpStatus.ACCEPTED);
+    public ResponseEntity<FieldErrorDTO> changePassword(@RequestBody ChangePasswordDTO changePasswordDTO) throws Exception {
+        return new ResponseEntity<FieldErrorDTO>(   settingService.changePassword(changePasswordDTO),HttpStatus.ACCEPTED);
     }
 
 }

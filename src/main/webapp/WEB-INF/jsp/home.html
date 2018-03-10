@@ -51,7 +51,7 @@
                 </a>
 
                 <div class="dropdown-menu list" class="list" aria-labelledby="dropdownMenu2">
-                    <p ><a class="dropdown-item" type="button" s>تغير كلمة المرور</a> </p>
+                    <p ><a class="dropdown-item" type="button"   data-toggle="modal" data-target="#changePasswordModal">تغير كلمة المرور</a> </p>
                     <a class="dropdown-item" ng-click="logout()" class="fa fa-user" logout type="button"> <p>  خروج</p> </a>
                 </div>
 
@@ -79,6 +79,43 @@
     <!-- routing -->
 
     <div id="content" ng-view></div>
+
+
+    <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="changePasswordModal"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel"> تعير كامة المرور</h3>
+                    <a type="button" class="close"  aria-label="Close">
+                        <span aria-hidden="true" ng-click="resetChangePassword()">&times;</span>
+                    </a>
+                </div>
+                <form method="post"data-parsley-validate="" id="changePasswordForm">
+                <div class="modal-body" style=" background-color: darkgrey;">
+
+                        <label for="oldPassword"> كلمة المرور الحالية :</label>
+                        <input type="password" id="oldPassword" t name="oldPassword" ng-model="changeReq.oldPassword"
+                               title="Password Token" style="    margin-right: 35px !important;    margin-bottom: 10px;" required data-parsley-error-message="هذا الحقل مطلوب"/>
+
+                        <label for="newPassword">كلمة المرور الجديدة :</label>
+                        <input type="password" id="newPassword" name="newPassword" ng-model="changeReq.newPassword"
+                               title="New password" style="    margin-right: 29px !important;    margin-bottom: 10px;" required data-parsley-error-message="هذا الحقل مطلوب"/>
+
+                        <label for="confirmPassword">تأكيد كلمو المرور الجديدة</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" ng-model="changeReq.confirmPassword" required data-parsley-error-message="هذا الحقل مطلوب"/>
+                        <span ng-show="changeReq.newPassword != changeReq.confirmPassword" class="danger" style="margin-left: 162px;" >غير متطابقة مع كلمة المرور</span>
+                        <span ng-show="!bad(changePasswordErrorMessage)" class="danger" style="margin-left: 162px;" >{{changePasswordErrorMessage}}</span>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"  ng-click="resetChangePassword()">إغلاق</button>
+                    <button type="submit" class="btn btn-primary">إرسال</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 
 </section>

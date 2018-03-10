@@ -1,5 +1,7 @@
 package com.rahmania.service;
 
+import com.rahmania.dto.user.ChangePasswordDTO;
+import com.rahmania.exception.FieldErrorDTO;
 import com.rahmania.model.AboutDTO;
 import com.rahmania.model.ConstraintDTO;
 import com.rahmania.model.PrizeDTO;
@@ -43,4 +45,6 @@ public interface SettingService {
     String getImage(HttpServletRequest request);
 
     void deletePrizeImage(HttpServletRequest request);
+
+    FieldErrorDTO changePassword(ChangePasswordDTO changePasswordDTO);
 }
