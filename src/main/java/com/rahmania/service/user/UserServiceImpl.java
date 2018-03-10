@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
         user.setToken(generateToken());
 
        UserDTO saveUserDTO =  transformer.transform(studentRepository.save(transformer.transform(user, Student.class)), UserDTO.class);
-        smsSender.sendRegisterationMessage(user.getMobileNumber() , user.getToken());
+        smsSender.sendRegisterationMessage(user.getMobileNumber() , user.getToken() + "   كود التأكيد");
         return  saveUserDTO;
     }
 
