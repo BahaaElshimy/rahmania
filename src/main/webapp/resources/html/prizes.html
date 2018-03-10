@@ -14,8 +14,10 @@
     <form>
         <h3 style="font-size: 36px !important;">جوائز المسابقة</h3>
         <hr>
-        <img style="width: 50%" ng-src="{{resources/image/competitionImage.jpg}}">
-        <p ng-repeat=" item in prizes">- {{item.description}}</p>
+        <div ng-if="!bad(image)">
+        <img style="width: 50%" ng-src="{{'resources/image/'+image.imageName}}">
+        </div>
+            <p ng-repeat=" item in prizes">- {{item.description}}</p>
         <br/>
     </form>
 </div>

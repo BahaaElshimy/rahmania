@@ -547,3 +547,15 @@ trash{
 	text-align: right !important;
 	font-size: 27px;
 }
+
+.standardButton{
+	padding-top: 4px;  margin-right: 3px!important;
+	font-family: 'Cairo', sans-serif !important;
+	border: 0 !important;
+	background: #06464d !important;
+	color: #fff !important;
+	font-size: 20px !important;
+	width: 100px !important;
+	height: 35px !important;
+	border-radius: 0% !important;
+}

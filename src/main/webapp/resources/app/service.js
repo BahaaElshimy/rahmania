@@ -17,8 +17,18 @@
                     headers: 'Accept:application/json',
                 });
             },
-            eidtSubject: function (subject) {
-                return $http.put("api/subjects/" + subject.id, subject);
+            eidtSubject: function (subject , file) {
+                var data = new FormData();
+                data.append('file', file);
+                data.append("subject" ,  angular.toJson(subject));
+                var config = {
+                    transformRequest: angular.identity,
+                    transformResponse: angular.identity,
+                    headers : {
+                        'Content-Type': undefined
+                    }
+                }
+                return $http.put("api/subjects/" + subject.id, data, config);
             },
             addSubject: function (subject , file) {
                 var data = new FormData();
@@ -301,7 +311,20 @@
                     headers: 'Accept:application/json',
                 });
             },
-
+            getImageName : function () {
+                return $http({
+                    url: 'settings/image',
+                    method: 'GET',
+                    headers: 'Accept:application/json',
+                });
+            },
+            deletePrizesImage : function () {
+                   return $http({
+                    url: 'api/settings/images/' + id,
+                    method: 'DELETE',
+                    headers: 'Accept:application/json',
+                });
+            }
         }
     }]);
 

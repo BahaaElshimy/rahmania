@@ -1,5 +1,6 @@
 package com.rahmania.controller;
 
+import com.rahmania.dto.ImageDTO;
 import com.rahmania.model.AboutDTO;
 import com.rahmania.model.ConstraintDTO;
 import com.rahmania.model.PrizeDTO;
@@ -8,11 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -43,10 +42,19 @@ public class BaseController {
     }
 
 
+    @GetMapping("settings/image")
+    @ResponseBody
+    public ResponseEntity<ImageDTO> getImage(HttpServletRequest request) throws Exception {
+      String imageNme =  settingService.getImage(request);
+        ImageDTO image = new ImageDTO (imageNme);
+        return new ResponseEntity<ImageDTO>( image,HttpStatus.ACCEPTED);
+    }
+
+
 
     @GetMapping("/about")
     public ResponseEntity<AboutDTO> retriveAbout() {
-        return new ResponseEntity<AboutDTO>(settingService.getAbout(), HttpStatus.ACCEPTED);
+        return new ResponseEntity<AboutDTO>(settingService.getAbout(), HttpStatus.OK);
     }
 
 /*    @RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)

@@ -116,9 +116,18 @@
             .when('/prizes', {
                 templateUrl: 'resources/html/prizes.html',
                 controller: function (rahmaniaService, $scope) {
+
+                    rahmaniaService.getImageName().success(function (data1) {
+                        $scope.image =data1;
+                    }).error(function (data) {
+                        alert("error");
+                    });
+
                     rahmaniaService.getPrizes().success(function (data) {
                         $scope.prizes = data;
                     });
+
+
                 }
             })
             .when('/subjects', {
@@ -220,7 +229,7 @@
         }
 
         $scope.editSubject = function () {
-            rahmaniaService.eidtSubject($scope.subject).success(function () {
+            rahmaniaService.eidtSubject($scope.subject ,$scope.file).success(function () {
                 $scope.loadSubjects();
                 $scope.resetSubject();
             }).error(function () {
@@ -410,6 +419,7 @@
                 });
 
             } else {
+
                 $("#submittAllAnswers").modal();
             }
         }
@@ -460,6 +470,9 @@
         $scope.prepareTestPage = function () {
             $rootScope.getUser();
         }
+        rahmaniaService.getRules().success(function (data) {
+            $scope.rules = data;
+        });
     }]);
     rahmania.controller('studentSubjectController', ['$scope', 'rahmaniaService', function ($scope, rahmaniaService) {
         rahmaniaService.getAllSubject().success(function (data) {
@@ -740,6 +753,7 @@
 
     rahmania.controller('prizesController', ['$scope', 'rahmaniaService', '$rootScope', '$http', function ($scope, rahmaniaService, $rootScope, $http) {
         $scope.isAddPrize = true;
+        $scope.file = null;
         $scope.doUploadImage = function () {
             var data = new FormData();
             data.append('file', $scope.file);
@@ -791,6 +805,21 @@
         };
 
         $scope.loadPrizes();
+
+        $scope.deleteImage = function (){
+            rahmaniaService.deletePrizesImage().success(function (data) {
+                $scope.image.imageName =null
+            });
+        };
+
+        rahmaniaService.getImageName().success(function (data1) {
+            $scope.image =data1;
+        });
+
+        $("#deleteImage").click= function () {
+
+            alert("onclic");
+        }
 
     }]);
     rahmania.controller('constraintController', ['$scope', 'rahmaniaService', '$rootScope', function ($scope, rahmaniaService, $rootScope) {

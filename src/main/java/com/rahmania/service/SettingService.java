@@ -38,4 +38,9 @@ public interface SettingService {
     List<ConstraintDTO> retrieveConstraints();
 
     void uploadPrizesImage(MultipartFile file, HttpServletRequest request) throws Exception;
+
+
+    String getImage(HttpServletRequest request);
+
+    void deletePrizeImage(HttpServletRequest request);
 }

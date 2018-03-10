@@ -25,6 +25,8 @@
 				<div ng-if="item.type=='fillGap'">
 					<display-gap item="item" ng-model="ngModel"></display-gap>
 				</div>
+
+
 			</div>
 
 		</div>
@@ -40,7 +42,7 @@
 
 			<div  >
 
-				<table class="table table-striped "  style="margin-top: 30px">
+				<table class="table table-striped "  style="margin-top: 30px;table-layout: fixed ;">
 					<thead class="thead-light ">
 					<tr>
 						<th style="text-align: center;">#</th>
@@ -57,9 +59,16 @@
 					<tr ng-repeat="item in questions track by $index"  ng-if="item.type=='fillGap'">
 						<td>{{$index+1}}</td>
 						<td><div ng-if="item.type=='fillGap'">
-							<display-gap item="item" ng-model="ngModel"></display-gap>
+							<display-gap-answer item="item" ng-model="ngModel"></display-gap-answer>
 						</div></td>
 						<td></td>
+					</tr>
+
+
+					<tr ng-repeat="item in questions track by $index"  ng-if="item.type=='wQuestion'">
+						<td>{{$index+1}}</td>
+						<td><label>{{item.question}}</label></td>
+						<td ><div style=" word-wrap: break-word;   width: 50% !important;" ng-bind="item.answer"></div></td>
 					</tr>
 					</tbody>
 				</table>

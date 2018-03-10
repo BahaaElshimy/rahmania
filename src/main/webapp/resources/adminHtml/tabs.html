@@ -9,7 +9,7 @@
 
                    <div class="col-md-6" ng-show="bad(subject.videoPath)">
                        <label style="color:black">  فيديو المادة </label><span class="requried">*</span>
-                       <input class="form-control" accept="video/mp4,video/x-m4v,video/*" type="file" file-model = "file" id="subjectVideoUploader" placeholder="Upload File" required data-parsley-error-message="من فضلك اختر فيديو"/>
+                       <input class="form-control" accept="video/mp4,video/x-m4v,video/*" type="file" file-model = "file" id="subjectVideoUploader" placeholder="Upload File" ng-required="bad(subject.videoPath)" required data-parsley-error-message="من فضلك اختر فيديو"/>
                    </div>
 
                    <div class="col-md-6" ng-show="!bad(subject.videoPath)">

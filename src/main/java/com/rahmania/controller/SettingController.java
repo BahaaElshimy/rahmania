@@ -82,4 +82,9 @@ public class SettingController {
         return new ResponseEntity<String>(HttpStatus.ACCEPTED);
     }
 
+    @DeleteMapping("/image")
+    public ResponseEntity<String> deletePrizeImage( HttpServletRequest request) throws Exception {
+        settingService.deletePrizeImage(request);
+        return new ResponseEntity<String>(HttpStatus.ACCEPTED);
+    }
 }

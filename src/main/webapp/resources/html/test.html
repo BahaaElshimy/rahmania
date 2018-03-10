@@ -10,7 +10,7 @@
 
     <div ng-if="!bad(videoSource)">
 
-        <subject-video video-source="videoSource"></subject-video>
+        <subject-video video-source="videoSource" ></subject-video>
 
     </div>
 
@@ -25,13 +25,18 @@
                 <div ng-if="item.type=='multichoice'" style="text-align: right;padding-right: 30px">
                     <p>
                     <h5>{{item.title}}</h5>
-                    <span style="font-weight: bold "> {{item.question}}</span>
-                    <div ng-repeat=" item2  in item.answers" style="text-align: right ;padding-right: 30px">
-                        <input type="radio" name="{{item.question}}" ng-model="item.answerId" value="{{item2.id}}"
-                               ng-required="!item.answerId" id="radio{{$index +'-'+ item.subjectId}}" style="width: 100px !important;"  data-parsley-error-message="هذا الحقل مطلوب"/>
-                        <label>{{item2.answer}}</label><br/>
+                    <span id="checkbox-errors{{item.id}}"></span>  &nbsp;&nbsp;&nbsp;   <span style="font-weight: bold "> {{item.question}}</span>
+                    <fieldset>
+                    <div ng-repeat=" item2  in item.answers track by $index" style="text-align: right ;padding-right: 30px" id="{{item.id}} ">
 
+                        <input type="radio" name="radio{{item.id}}" ng-model="item.answerId" value="{{item2.id}}"
+                               ng-required="$index == (item.answers.length-1 )" id="radio{{item2.id +'-'+ item.subjectId}}" style="width: 100px !important;"  data-parsley-multiple="checkbox{{item.id}}" data-parsley-errors-container="#checkbox-errors{{item.id}}"  data-parsley-error-message="يجب ان تجيب  هذا السؤال"/>
+                        <label>{{item2.answer}}</label><br/>
                     </div>
+
+
+                    </fieldset>
+
                     </p>
                 </div>
 
@@ -46,8 +51,7 @@
                 <div ng-if="item.type=='wQuestion'" style="text-align: right;padding-right: 30px">
                     <h5>{{item.title}}</h5>
                 <span style="font-weight: bold "> {{item.question}}</span> <br>
-                <textarea  ng-model="item.answer" maxlength="1024" style="width: 50% ;height:100px" required />
-
+                <textarea id="what-{{item.subjectId}}" ng-model="item.answer" maxlength="1024" style="width: 50% ;height:100px" required data-parsley-error-message="هذا الحقل مطلوب" />
 
             </div>
                 </p>

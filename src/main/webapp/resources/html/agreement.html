@@ -14,14 +14,10 @@
             <img style="width: 50%" src="/resources/assets/images/13.png">
             <h3>مسابقة نعمة الاجتماع ونبذ الافتراق</h3>
             <h3><span>لتقعيد أصول أهل السنة والجماعة ونبذ الأفكار الضالة الهدامة</span></h3>
-            <p>- لتقعيد أصول أهل السنة والجماعة ونبذ الأفكار الضالة الهدامة</p>
-            <p>- لتقعيد أصول أهل السنة والجماعة ونبذ الأفكار الضالة الهدامة</p>
-            <p>- لتقعيد أصول أهل السنة والجماعة ونبذ الأفكار الضالة الهدامة</p>
-            <p>- لتقعيد أصول أهل السنة والجماعة ونبذ الأفكار الضالة الهدامة</p>
-            <p>- لتقعيد أصول أهل السنة والجماعة ونبذ الأفكار الضالة الهدامة</p>
+            <p ng-repeat="item in rules" style="text-align: right !important;">- {{item.description}}</p>
             <br/>
             <p><input type="checkbox" name="check" ng-model="agree" required=""/> قرأت الشروط</p>
-            <p><input type="submit" ng-disabled="!agree" > موافق </input>
+            <p><button type="submit" ng-disabled="!agree">موافق</button> </p>
         </form>
     </div>
 

@@ -4,7 +4,15 @@
     <div class="form-group" >
         <div class="col-sm-5" style="float: right">
 
-            <input class="form-control"  type="file" file-model = "file"id="imageUploader" placeholder="Upload File"  onchange="angular.element(this).scope().doUploadImage()"  required data-parsley-error-message="من فضلك اختر فيديو"/>
+            <div class="col-md-6" ng-if="!bad(image.imageName)">
+                <label style="color:black"> صورة الجوائز </label><br>
+                <a id="deleteImage" onclick="deleteImage()"> <span class="glyphicon glyphicon-trash"></span> </a>
+            </div>
+
+            <div class="col-md-6" ng-show="bad(image.imageName)">
+            <input class="form-control"  type="file" file-model = "file"id="imageUploader" placeholder="Upload File"  onchange="angular.element(this).scope().doUploadImage(this)"  required data-parsley-error-message="من فضلك اختر فيديو"/>
+            </div>
+
 
         </div>
     </div>

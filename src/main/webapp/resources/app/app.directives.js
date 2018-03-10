@@ -144,7 +144,7 @@
     angular.module('rahmania').directive("subjectVideo", function ($rootScope) {
         return {
             restrict: "E",
-            template: ' <video width="500px" controls id="myVideo"> <source   id="tv_main_channel" src="{{videoSource}}" type="video/mp4"  > </video> ',
+            template: ' <video style="width: 50% !important;" controls id="myVideo"> <source   id="tv_main_channel" src="{{videoSource}}" type="video/mp4"  > </video> ',
             scope:{
                 videoSource:'='
             },
@@ -154,6 +154,50 @@
                  });
              },
             controller: function ($scope, $rootScope) {
+
+            }
+        }
+    });
+
+    angular.module('rahmania').directive("displayGapAnswer", function ($rootScope  ,rahmaniaService ,$timeout ,$compile) {
+        return {
+            restrict: "E",
+            template: '',
+            replace:true,
+            scope: {
+                item:'=',
+                ngModel: "="
+            },
+            compile: function (tElem, tAttrs) {
+                return {
+                    pre: function (scope, iElem, iAttrs  ) {
+
+                    },
+                    post: function (scope, iElem, iAttrs) {
+                        if(!$rootScope.bad(scope.item.question)){
+                            var tempQuestion = "";
+                            var newElement ="";
+                            scope.item.parts =$rootScope.bad(scope.item.parts) ? [] : scope.item.parts;
+                            var partCount  = 0;
+                            for (var i = 0; i < scope.item.question.length; i++) {
+                                if (scope.item.question[i] == "+") {
+                                    iElem.append($compile("<span>" + tempQuestion + "</span>")(scope));
+                                    newElement="<span>&nbsp; &nbsp; </span><input name='gap"+i+"' ng-model='item.parts["+partCount+"]'"+" ng-required='true' style='padding:5px;width: 150px' /> <span>&nbsp; &nbsp; </span>";
+                                    iElem.append($compile(newElement)(scope));
+                                    tempQuestion = "";
+                                    partCount++;
+                                } else {
+                                    tempQuestion += scope.item.question[i];
+                                }
+                            }
+                            iElem.append($compile("<span>" + tempQuestion + "</span>")(scope));
+
+
+                        }
+                    }
+                }
+            },
+            link:  function(scope, elem, attrs, ctrl){
 
             }
         }

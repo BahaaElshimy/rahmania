@@ -57,7 +57,9 @@ public class SubjectController {
     @PutMapping(value = "/{id}")
     @ResponseBody
     @PreAuthorize("hasRole('admin')")
-    public ResponseEntity<String> updateSubject(@PathVariable("id")Long id , @RequestBody SubjectDTO subjectDTO, @RequestParam(value = "file" , required = false) MultipartFile file,HttpServletRequest request) throws Exception {
+    public ResponseEntity<String> updateSubject(@PathVariable("id")Long id ,  @RequestParam(value = "file" , required = false) MultipartFile file,@RequestParam("subject") String json, HttpServletRequest request) throws Exception {
+        ObjectMapper mapper = new ObjectMapper();
+        SubjectDTO subjectDTO = mapper.readValue(json, SubjectDTO.class);
          subjectService.updateSubject(subjectDTO , file, request ,id);
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }

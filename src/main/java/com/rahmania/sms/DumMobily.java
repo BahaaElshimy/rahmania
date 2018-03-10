@@ -13,6 +13,7 @@ import java.io.UnsupportedEncodingException;
 public class DumMobily implements SmsService {
     @Override
     public void sendMessage(String userName, String password, String sender, String message, String numbers) throws UnsupportedEncodingException {
+        System.out.println("****************************\t" + message );
 
     }
 }

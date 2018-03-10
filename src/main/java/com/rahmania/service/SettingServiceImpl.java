@@ -17,7 +17,10 @@ import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -43,6 +46,8 @@ public class SettingServiceImpl implements SettingService {
 
     @Autowired
     Transformer transformer;
+
+
 
     @Override
     public void addPrize(PrizeDTO prize) throws  Exception{
@@ -132,12 +137,38 @@ public class SettingServiceImpl implements SettingService {
 
             dir.mkdir();
 
-            Path path = Paths.get(dir+"/competitionImage.jpg");
+            Path path = Paths.get(dir+"/"+file.getOriginalFilename());
             Files.write(path, bytes);
+            FileWriter fileWriter= new FileWriter(new File(dir+"/fileName.txt"));
+            fileWriter.write(file.getOriginalFilename());
+            fileWriter.close();
+
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException("FAIL!");
         }
 
       }
+
+    @Override
+    public String getImage(  HttpServletRequest request) {
+        String s ="";
+        String realPath = request.getServletContext().getRealPath("/resources/image/fileName.txt");
+        try(BufferedReader reader  = new BufferedReader(new FileReader(new File(realPath)))){
+            s = reader.readLine();
+        }catch (Exception e){
+  e.printStackTrace();
+        }
+        return s;
+    }
+
+    @Override
+    public void deletePrizeImage(HttpServletRequest request) {
+        String realPath = request.getServletContext().getRealPath("/resources/image");
+        File dir = new File(realPath);
+        if(dir.exists())
+        {
+            FileSystemUtils.deleteRecursively(dir);
+        }
+    }
 }

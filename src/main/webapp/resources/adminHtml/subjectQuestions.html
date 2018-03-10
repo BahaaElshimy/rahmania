@@ -10,7 +10,7 @@
         <div ng-show="!bad(type)">
 
             <span class="requried" ng-show="type=='fillGap'">ضع مكان الفراغ علامة + </span><br>
-            <label>السؤال </label> <span class="requried">*</span>
+           <span style="position: absolute; margin-right: -82px !important;"> <label>السؤال </label> <span class="requried">*</span> </span>
             <textarea style="height: 92px !important;width: 60%" type="text" required ng-model="question.question" ng-pattern-restrict="{{arabicOnly}}" data-parsley-error-message="هذا الحقل مطلوب"/>
         </div>
 
@@ -33,10 +33,10 @@
 
 
         <button type="submit" ng-show="isAddQuestion" ng-if="!bad(type)"
-                ng-disabled="type=='multichoice'&& question.answers.length<1 "> إضافة السؤال
+                ng-disabled="type=='multichoice'&& question.answers.length<1 "> إضافة
         </button>
         <button type="button " ng-show="!isAddQuestion" ng-click="editQuestion()"
-                ng-disabled="type=='multichoice' && question.answers.length<1"> تعديل السؤال
+                ng-disabled="type=='multichoice' && question.answers.length<1"> تعديل
         </button>
 
     </form>
