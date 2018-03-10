@@ -87,4 +87,11 @@ public class SettingController {
         settingService.deletePrizeImage(request);
         return new ResponseEntity<String>(HttpStatus.ACCEPTED);
     }
+
+    @PutMapping("/resetPassword")
+    public ResponseEntity<String> changePassword(@RequestBody ConstraintDTO constraintDTO, @PathVariable("id") Long id) throws Exception {
+        settingService.editConstraing(constraintDTO, id);
+        return new ResponseEntity<String>(HttpStatus.ACCEPTED);
+    }
+
 }
