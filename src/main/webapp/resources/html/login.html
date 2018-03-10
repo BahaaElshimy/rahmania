@@ -4,13 +4,15 @@
     <form id="loginForm" name="loginForm" novalidate  autocomplete="off"  data-parsley-validate="">
         <div >
             <p><label for="pseudo"> (05) رقم الجوال</label> <span class="requried">*</span> :
-                <input type="text" name="username" id="username" ng-model="username" required   data-parsley-error-message="هذا الحقل مطلوب" /></p>
+                <input type="text" name="username" id="username" ng-model="username" required maxlength="10"  data-parsley-error-message="هذا الحقل مطلوب" /></p>
             <p><label for="password">كلمة السر</label> <span class="requried">*</span>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                 <input type="password" name="password" id="pwd" ng-model="password" required   data-parsley-error-message="هذا الحقل مطلوب"/></p>
 
             <span ng-show="loginForm.$submitted" class="danger" style="margin-left: 162px;" >{{errorMessage}}</span> <br>
-
+            <p style="margin: 0 !important;"><a href="#/forgetPassword" style="    padding: 0;
+    border: 0;
+   background-color:transparent; !important;" >هل نسيت كلمة المرور</a></p>
             <p style="    margin-top: 5px;margin-left: -92px;">
             <button type="submit" >دخول</button>
             <a  id="testRegisetr" href="#/register" style="padding-top: 4px;  margin-right: 3px;font-family: 'Cairo', sans-serif !important;    border: 0; background: #06464d; color: #fff;    font-size: 20px; width: 100px;height: 35px;  border-radius: 0%;" >تسجيل</a>

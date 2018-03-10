@@ -1,6 +1,7 @@
 package com.rahmania.controller;
 
 import com.rahmania.dto.ImageDTO;
+import com.rahmania.dto.user.ForgetPasswordDTO;
 import com.rahmania.model.AboutDTO;
 import com.rahmania.model.ConstraintDTO;
 import com.rahmania.model.PrizeDTO;
@@ -59,8 +60,8 @@ public class BaseController {
 
 
     @PostMapping("/forgetPassword")
-    public ResponseEntity<String> changePassword(@RequestBody ConstraintDTO constraintDTO, @PathVariable("id") Long id) throws Exception {
-        settingService.editConstraing(constraintDTO, id);
+    public ResponseEntity<String> changePassword(@RequestBody ForgetPasswordDTO forgetPasswordDTO) throws Exception {
+        settingService.forgetPassword(forgetPasswordDTO);
         return new ResponseEntity<String>(HttpStatus.ACCEPTED);
     }
 

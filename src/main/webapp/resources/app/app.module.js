@@ -5,7 +5,7 @@
         $rootScope.arabicOnly = '';
 
         $rootScope.authenticated = false;
-        $rootScope.mobileNumber = '/[0][5][0-9]{8}$/';
+        $rootScope.mobileNumberRegex = '/[0][5][0-9]{8}$/';
 
 
         $rootScope.changePasswordErrorMessage ="";
@@ -183,6 +183,9 @@
                     $scope.rules = data;
                 });
             }
+        }).when('/forgetPassword', {
+            templateUrl: 'resources/html/forgetPassword.html',
+            controller: 'forgetPasswordController'
         })
 
             .otherwise(
@@ -448,6 +451,8 @@
                 $("#submittAllAnswers").modal();
             }
         }
+
+
 
         $scope.reloadPage = function(){
             $window.location.reload();
@@ -923,6 +928,27 @@
         };
 
         $scope.loadAbouts();
+
+
+    }]);
+
+
+    rahmania.controller('forgetPasswordController', ['$scope', 'rahmaniaService', '$location', '$rootScope', function ($scope, rahmaniaService, $location, $rootScope) {
+        $scope.mobileNumber="";
+       $scope.submitted = false;
+        var forgetPasswordForm = $('#forgetPasswordForm').parsley();
+        $('#forgetPasswordForm').parsley().on('form:validated', function () {
+        });
+
+
+        $scope.forgetPassword = function () {
+            if ($scope.forgetPasswordForm.$valid) {
+                rahmaniaService.forgetPassword({"mobileNumber":$scope.mobileNumber}).success(function (data){
+                    $scope.submitted = true;
+                });
+
+            }
+        }
 
 
     }]);

@@ -1,6 +1,8 @@
 package com.rahmania.entity;
 
 
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -27,6 +29,8 @@ public  class Users extends AbstractEntity {
 
     @ManyToOne
     private Roles role ;
+
+    private DateTime lastForgetPassword;
 
     public String getName() {
         return name;
@@ -82,5 +86,13 @@ public  class Users extends AbstractEntity {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public DateTime getLastForgetPassword() {
+        return lastForgetPassword;
+    }
+
+    public void setLastForgetPassword(DateTime lastForgetPassword) {
+        this.lastForgetPassword = lastForgetPassword;
     }
 }

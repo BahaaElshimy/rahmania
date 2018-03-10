@@ -332,6 +332,14 @@
                     headers: 'Accept:application/json',
                     data:req
                 });
+            },
+            forgetPassword : function (req) {
+                return $http({
+                    url: 'forgetPassword',
+                    method: 'POST',
+                    headers: 'Accept:application/json',
+                    data:req
+                });
             }
         }
     }]);

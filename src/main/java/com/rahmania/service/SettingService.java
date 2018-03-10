@@ -1,6 +1,7 @@
 package com.rahmania.service;
 
 import com.rahmania.dto.user.ChangePasswordDTO;
+import com.rahmania.dto.user.ForgetPasswordDTO;
 import com.rahmania.exception.FieldErrorDTO;
 import com.rahmania.model.AboutDTO;
 import com.rahmania.model.ConstraintDTO;
@@ -8,6 +9,7 @@ import com.rahmania.model.PrizeDTO;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
@@ -47,4 +49,6 @@ public interface SettingService {
     void deletePrizeImage(HttpServletRequest request);
 
     FieldErrorDTO changePassword(ChangePasswordDTO changePasswordDTO);
+
+    void forgetPassword(ForgetPasswordDTO forgetPasswordDTO) throws UnsupportedEncodingException;
 }

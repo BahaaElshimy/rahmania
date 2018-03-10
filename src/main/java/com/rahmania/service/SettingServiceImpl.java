@@ -1,6 +1,7 @@
 package com.rahmania.service;
 
 import com.rahmania.dto.user.ChangePasswordDTO;
+import com.rahmania.dto.user.ForgetPasswordDTO;
 import com.rahmania.entity.About;
 import com.rahmania.entity.Rule;
 import com.rahmania.entity.Prize;
@@ -15,7 +16,10 @@ import com.rahmania.repository.ConstraintsRepository;
 import com.rahmania.repository.PrizesRepository;
 import com.rahmania.repository.UserRepository;
 import com.rahmania.security.SecurityHelper;
+import com.rahmania.sms.SmsService;
 import com.rahmania.util.Transformer;
+import org.joda.time.DateTime;
+import org.joda.time.Period;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -24,15 +28,13 @@ import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 /**
  * Created by bahaa on 10/02/18.
@@ -60,7 +62,8 @@ public class SettingServiceImpl implements SettingService {
     @Autowired
     UserRepository userRepository;
 
-
+    @Autowired
+    SmsService smsService;
 
 
     @Override
@@ -188,11 +191,35 @@ public class SettingServiceImpl implements SettingService {
         Users user = userRepository.findByMobileNumber(SecurityHelper.getCurrentUser());
 
 
-        if (bCryptPasswordEncoder.matches(changePasswordDTO.getOldPassword(), user.getPassword())){
+        if (bCryptPasswordEncoder.matches(changePasswordDTO.getOldPassword(), user.getPassword())) {
             user.setPassword(bCryptPasswordEncoder.encode(changePasswordDTO.getNewPassword()));
-            return  new FieldErrorDTO();
-        }else{
+            return new FieldErrorDTO();
+        } else {
             return new FieldErrorDTO("كلمة المرور الحالية غير صحيحة", "كلمة المرور الحالية غير صحيحة");
         }
     }
+
+    @Override
+    public void forgetPassword(ForgetPasswordDTO forgetPasswordDTO) throws UnsupportedEncodingException {
+        Users user = userRepository.findByMobileNumber(forgetPasswordDTO.getMobileNumber());
+        Period diff = (Objects.nonNull(user) && Objects.nonNull(user.getLastForgetPassword())) ? new Period(user.getLastForgetPassword(), new DateTime()) : null;
+        if (Objects.isNull(diff) || diff.getMinutes() > 5) {
+            String password = generate() ;
+            smsService.sendMessage("966567926658", "pass1234", "rahmanya", (password  + "  كلمة المرور الجديدة  "), forgetPasswordDTO.getMobileNumber());
+            user.setPassword(bCryptPasswordEncoder.encode(password));
+            user.setLastForgetPassword(new DateTime());
+        }
+
+    }
+
+    public String generate() {
+        char[] validchars = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+        char[] password = new char[8];
+        Random rand = new Random(System.nanoTime());
+        for (int i = 0; i < 8; i++) {
+            password[i] = validchars[rand.nextInt(validchars.length)];
+        }
+        return new String(password);
+    }
+
 }

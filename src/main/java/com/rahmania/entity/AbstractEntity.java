@@ -2,6 +2,7 @@ package com.rahmania.entity;
 
 
 import org.hibernate.annotations.GenericGenerator;
+import org.joda.time.DateTime;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -13,9 +14,9 @@ public abstract class AbstractEntity implements Serializable {
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDateTime creationDate;
+    private DateTime creationDate;
 
-    private LocalDateTime modifiedDate;
+    private DateTime modifiedDate;
 
     public Long getId() {
         return id;
@@ -25,21 +26,21 @@ public abstract class AbstractEntity implements Serializable {
         this.id = id;
     }
 
-    public LocalDateTime getCreationDate() {
+    public DateTime getCreationDate() {
         return creationDate;
     }
 
     @PrePersist
     public void setCreationDate() {
-        this.creationDate = LocalDateTime.now();
+        this.creationDate =new DateTime();
     }
 
-    public LocalDateTime getModifiedDate() {
+    public DateTime getModifiedDate() {
         return modifiedDate;
     }
 
     @PreUpdate
     public void setModifiedDate() {
-        this.modifiedDate = LocalDateTime.now();
+        this.modifiedDate = new DateTime();
     }
 }
