@@ -62,7 +62,7 @@ public class QuestionServiceImpl implements QuestionService {
     @Override
     public List<QuestionDTO> listAll() {
         List<QuestionDTO> result = new ArrayList<>();
-        List<Question> questions = questionRepository.findAll();
+        List<Question> questions = questionRepository.getAllQuestions();
         questions.forEach(e -> {
             result.add(SimpleQuestionFactoryTransformer.convertQuestionToModel(e, transformer));
         });
@@ -132,7 +132,7 @@ public class QuestionServiceImpl implements QuestionService {
 
         // first time
         List<QuestionDTO> result = new ArrayList<>();
-        List<Question> questions = questionRepository.findAll();
+        List<Question> questions = questionRepository.getAllQuestions();
         questions.forEach(e -> {
             result.add(SimpleQuestionFactoryTransformer.convertQuestionToStudentModel(e, transformer));
         });

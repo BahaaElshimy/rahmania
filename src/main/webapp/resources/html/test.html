@@ -23,9 +23,14 @@
             <div class="force-overflow" ng-repeat=" item in questions  "
                  ng-hide="item.subjectId!=subjects[currentSubject].id">
                 <div ng-if="item.type=='multichoice'" style="text-align: right;padding-right: 30px">
-                    <p>
-                    <h5>{{item.title}}</h5>
-                    <span id="checkbox-errors{{item.id}}"></span>  &nbsp;&nbsp;&nbsp;   <span style="font-weight: bold "> {{item.question}}</span>
+                    <p style="direction: rtl;">
+                        <span id="checkbox-errors{{item.id}}"></span>
+                    <h4  >
+                      <span> {{$index+1}} </span> <span> -</span>
+                       <span style="font-weight: bold "ng-bind="item.title"> </span>
+                       <span  ng-show="!bad(item.title)" tyle="font-weight: bold ">|</span>
+                       <span> {{item.question}}</span>
+                   </h4>
                     <fieldset>
                     <div ng-repeat=" item2  in item.answers track by $index" style="text-align: right ;padding-right: 30px" id="{{item.id}} ">
 
@@ -42,15 +47,17 @@
 
                 <p style="width: 100% !important;">
                 <div ng-if="item.type=='fillGap'" style="text-align: right;padding-right: 30px">
-                    <h5>{{item.title}}</h5>
+                <h4 ><span> {{$index+1}} </span> <span> - </span> <span ng-if="item.title"style="font-weight: bold ">{{item.title}} </span></h4>
                     <display-gap item="item"></display-gap>
                 </div>
                 </p>
 
                 <p>
                 <div ng-if="item.type=='wQuestion'" style="text-align: right;padding-right: 30px">
-                    <h5>{{item.title}}</h5>
-                <span style="font-weight: bold "> {{item.question}}</span> <br>
+                <h4 ><span> {{$index+1}} </span> <span> - </span> <span ng-if="item.title"style="font-weight: bold ">{{item.title}} </span><span  ng-if="item.title" tyle="font-weight: bold ">| </span>
+
+                    <span > {{item.question}}</span></h4>
+              <br>
                 <textarea id="what-{{item.subjectId}}" ng-model="item.answer" maxlength="1024" style="width: 50% ;height:100px" required data-parsley-error-message="هذا الحقل مطلوب" />
 
             </div>

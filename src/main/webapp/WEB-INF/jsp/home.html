@@ -47,13 +47,25 @@
                 <a class="dropdown-toggle"  id="user"  type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="fa fa-user"></span>
                     <span  class="fa fa-ellipsis-v"></span>
+                    <p class="userName"> <span > {{ user.name| limitTo: 15 }} {{user.name.length > 15 ? '..' : ''}} </span> </p>
                 </a>
+
                 <div class="dropdown-menu list" class="list" aria-labelledby="dropdownMenu2">
                     <p ><a class="dropdown-item" type="button" s>تغير كلمة المرور</a> </p>
                     <a class="dropdown-item" ng-click="logout()" class="fa fa-user" logout type="button"> <p>  خروج</p> </a>
                 </div>
+
+
+
             </div>
     </div>
+
+
+    <div ng-if="!authenticated" class="loginHeader">
+
+        <p >  <a href="#/login" class="loginHeaderText">  تسجيل الدخول  </a></p>
+    </div>
+
 </header>
 
 

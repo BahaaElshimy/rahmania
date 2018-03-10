@@ -764,7 +764,10 @@
                     'Content-Type': undefined
                 }
             }
-            $http.post('api/settings/uploadPrizeImage', data, config)
+            $http.post('api/settings/uploadPrizeImage', data, config).success(function () {
+                $scope.loadImage();
+                $scope.file=null;
+            });
         }
 
         $scope.addPrize = function () {
@@ -812,14 +815,23 @@
             });
         };
 
-        rahmaniaService.getImageName().success(function (data1) {
-            $scope.image =data1;
+        $scope.loadImage =function (){
+            rahmaniaService.getImageName().success(function (data1) {
+                $scope.image =data1;
+            });
+        }
+
+        $(".attachmentsUpload input.file").change(function () {
+            if ($("#imageUploader").val() == "") {
+                return;
+            }
+            // your ajax submit
+          $scope.doUploadImage().success(function () {
+              $("#imageUploader").val("");
+
+          });
         });
 
-        $("#deleteImage").click= function () {
-
-            alert("onclic");
-        }
 
     }]);
     rahmania.controller('constraintController', ['$scope', 'rahmaniaService', '$rootScope', function ($scope, rahmaniaService, $rootScope) {

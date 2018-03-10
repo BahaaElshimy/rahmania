@@ -20,8 +20,8 @@ header{
 	margin-right: 2%;
 }
 #user{
-	height: 42px;
-    width: 150px;
+	height: 57px;
+    width: 194px;
     background-color: #dbc082;
     border-radius: 0px 0px 25px 0px;
     text-align: left;
@@ -558,4 +558,31 @@ trash{
 	width: 100px !important;
 	height: 35px !important;
 	border-radius: 0% !important;
+}
+
+.userName{
+	margin-top: -11px!important;
+	padding: 2px !important;
+	color: #fff !important;
+}
+
+.loginHeader{
+	height: 50px;
+	width: 185px;
+	background-color: #dbc082;
+	color: #ffffff;
+	border-radius: 0px 0px 25px 0px;
+	text-align: left;
+	padding: 5px 20px;
+	float: left;
+	top: 0;
+	font-family: 'Cairo', sans-serif;
+}
+
+.loginHeaderText{
+	font-size: 21px !important;
+	background-color: #dbc082;
+	color: #ffffff !important;
+
+
 }

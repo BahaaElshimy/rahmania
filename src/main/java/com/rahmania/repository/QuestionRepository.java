@@ -16,4 +16,7 @@ public interface QuestionRepository extends JpaRepository<Question, Long> {
     @Query("select new com.rahmania.dto.QuestionRightAnswerDTO(a.question.id , a.id)from MultiChoiceAnswer a where a.correct = true " )
     List<QuestionRightAnswerDTO> getRightAnswers();
 
+
+    @Query("select q from Question  q   order by q.subject.id" )
+    List<Question> getAllQuestions();
 }

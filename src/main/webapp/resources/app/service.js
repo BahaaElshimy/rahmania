@@ -320,7 +320,7 @@
             },
             deletePrizesImage : function () {
                    return $http({
-                    url: 'api/settings/images/' + id,
+                    url: 'api/settings/image',
                     method: 'DELETE',
                     headers: 'Accept:application/json',
                 });
