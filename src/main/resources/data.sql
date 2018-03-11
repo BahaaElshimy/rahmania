@@ -1,4 +1,3 @@
-/*
 
 
 insert into roles (id , name) VALUES (1 , 'admin');
@@ -42,4 +41,3 @@ insert into menue (id , name ,url) VALUES (300 , 'اعداد جوائز المس
 insert into role_menue (role_id , menue_id) VALUES
   (1,301),
   (1,300);
-*/

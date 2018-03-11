@@ -50,9 +50,9 @@
                     <p class="userName"> <span > {{ user.name| limitTo: 15 }} {{user.name.length > 15 ? '..' : ''}} </span> </p>
                 </a>
 
-                <div class="dropdown-menu list" class="list" aria-labelledby="dropdownMenu2">
-                    <p ><a class="dropdown-item" type="button"   data-toggle="modal" data-target="#changePasswordModal">تغير كلمة المرور</a> </p>
-                    <a class="dropdown-item" ng-click="logout()" class="fa fa-user" logout type="button"> <p>  خروج</p> </a>
+                <div class="dropdown-menu list" class="list" aria-labelledby="dropdownMenu2" style="margin-top: 12px;">
+                    <p><li><a id="testA" class="dropdown-item" type="button"   data-toggle="modal" data-target="#changePasswordModal"><p>تغير كلمة المرور</p></a> </li></p>
+                    <p><li><a class="dropdown-item" ng-click="logout()" class="fa fa-user" logout type="button"> <p>  خروج</p> </a></li></p>
                 </div>
 
 

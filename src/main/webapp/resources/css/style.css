@@ -588,3 +588,11 @@ trash{
 
 
 }
+.dropdown-menu>li>a{
+	color: #fff !important;
+	font-size: 15px !important;
+	font-family: 'Cairo', sans-serif !important;
+}
+
+
+
