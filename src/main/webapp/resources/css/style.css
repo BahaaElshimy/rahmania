@@ -248,7 +248,7 @@ button span{
     margin: auto;
 }
 #navigation b, #statut b{
-	padding: 0px 12px  0px 11px;
+	padding: 0px 12px  0px 7px;
 }
 .videoWrapper {
 	margin: auto;
@@ -270,11 +270,11 @@ button span{
 #statut{
 	background-color: #06464d;
 	color: #fff;
-	height: 32px;
+	height: 34px;
 	border-radius: 10px 10px 0px 0px;
 	font-family: 'Cairo', sans-serif;
 	text-align: right;
-	padding:.5%
+	padding: 5px 3px 0px 0px;
 }
 #statut b{
     background-color: #d7b872;
@@ -391,6 +391,8 @@ button span{
     font-weight: bold;
     font-family: 'Cairo', sans-serif;
 }
+
+
 .control-button button{
 	background-color: #fff;
 	color: #06464d;

@@ -49,8 +49,8 @@ public class StudentController {
 
 
     @PutMapping("/eleminate")
-    public ResponseEntity<String> eleminateStudnts(@RequestBody List<Long> studentIs) {
-        studentService.eleminateStudnts(studentIs);
+    public ResponseEntity<String> eleminateStudnts(@RequestBody List<Long> studentIs , @RequestParam(value = "all", required = false) Boolean all) {
+        studentService.eleminateStudnts(studentIs ,all);
         return new ResponseEntity<String>(HttpStatus.ACCEPTED);
     }
 
@@ -83,5 +83,35 @@ public class StudentController {
         return new ResponseEntity<List<StudentDTO>>(studentService.retriveCandidate(), HttpStatus.ACCEPTED);
     }
 
+    @GetMapping(value = "/eliminated")
+    public ResponseEntity<List<StudentDTO>> retriveEliminated() {
+        return new ResponseEntity<List<StudentDTO>>(studentService.retriveEliminated(), HttpStatus.ACCEPTED);
+    }
 
+
+    @GetMapping(value = "/search/eliminated/{grade}")
+    public ResponseEntity<List<StudentDTO>> getElminatedByGrade( @PathVariable Long grade) {
+        return new ResponseEntity<List<StudentDTO>>(studentService.getElminatedByGrade(grade), HttpStatus.ACCEPTED);
+    }
+
+    @GetMapping(value = "/search/candidate/{grade}")
+    public ResponseEntity<List<StudentDTO>> getCandidateByGrade( @PathVariable Long grade) {
+        return new ResponseEntity<List<StudentDTO>>(studentService.getCandidateByGrade(grade), HttpStatus.ACCEPTED);
+    }
+
+    @GetMapping(value = "/search/all/{grade}")
+    public ResponseEntity<List<StudentDTO>> getAllByGrade( @PathVariable Long grade) {
+        return new ResponseEntity<List<StudentDTO>>(studentService.getAllByGrade(grade), HttpStatus.ACCEPTED);
+    }
+    @GetMapping(value = "/search/partcipated/{grade}")
+    public ResponseEntity<List<StudentDTO>> getPartcipatedByGrade( @PathVariable Long grade) {
+        return new ResponseEntity<List<StudentDTO>>(studentService.getPartcipatedByGrade(grade), HttpStatus.ACCEPTED);
+    }
+
+
+
+    @GetMapping("/listAllTookExam")
+    public ResponseEntity<List<StudentDTO>> listAllTookExam() {
+        return new ResponseEntity<List<StudentDTO>>(studentService.retriveAllSutdentsTookExam(), HttpStatus.ACCEPTED);
+    }
 }

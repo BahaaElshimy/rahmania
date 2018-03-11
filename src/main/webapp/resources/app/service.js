@@ -152,7 +152,14 @@
             },
             getAllStudents:function () {
                 return $http({
-                    url: 'api/studnet/listAll',
+                    url: 'api/studnet/listAllTookExam',
+                    method: 'GET',
+                    headers: 'Accept:application/json',
+                });
+            },
+            getStudentsWithGradeEqualOrGreater :function (tab , grade) {
+                return $http({
+                    url: 'api/studnet/search/'+tab+"/"+grade,
                     method: 'GET',
                     headers: 'Accept:application/json',
                 });
@@ -160,6 +167,13 @@
             getParticpated : function () {
                 return $http({
                     url: 'api/studnet/partcipated',
+                    method: 'GET',
+                    headers: 'Accept:application/json',
+                });
+            },
+            getEliminated : function () {
+                return $http({
+                    url: 'api/studnet/eliminated',
                     method: 'GET',
                     headers: 'Accept:application/json',
                 });
@@ -258,21 +272,17 @@
                 return $http.get("api/studnet/answers/"+id );
             },
             moveToParticipated : function (ids , all) {
-                var param ="";
-                if(all){
-                    param = "?all=true";
-                }
-
                 return $http({
-                    url: 'api/studnet/partcipate'+param,
+                    url: 'api/studnet/partcipate',
                     method: 'PUT',
                     headers: 'Accept:application/json',
                     data:ids
                 });
             },
-            elimenate: function (ids) {
+            elimenate: function (ids ,all) {
+                var param ="";
                 return $http({
-                    url: 'api/studnet/eleminate',
+                    url: 'api/studnet/eleminate'+param,
                     method: 'PUT',
                     headers: 'Accept:application/json',
                     data:ids
@@ -294,9 +304,7 @@
             },
             moveToCandidate : function (ids , all) {
                 var param = "";
-                if (all) {
-                    param = "?all=true";
-                }
+
                     return $http({
                         url: 'api/studnet/candidate' + param,
                         method: 'PUT',

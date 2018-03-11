@@ -85,7 +85,12 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public void eleminateStudnts(List<Long> studentIds) {
+    public void eleminateStudnts(List<Long> studentIds, Boolean all) {
+
+        if (Objects.nonNull(studentIds) && Objects.nonNull(all) && all) {
+            studentRepository.moveAllStudentsToEliminated();
+            return;
+        }
         studentRepository.eleminateStudnts(studentIds);
     }
 
@@ -134,7 +139,7 @@ public class StudentServiceImpl implements StudentService {
     public void moveToCandidate(List<Long> studentIs, Boolean all) {
 
         if (Objects.nonNull(studentIs) && Objects.nonNull(all) && all) {
-            studentRepository.moveToAllStudentsTParticipate();
+            studentRepository.moveAllStudentsToCandidates();
             return;
         }
         studentRepository.moveToCandidate(studentIs);
@@ -143,5 +148,33 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<StudentDTO> retriveCandidate() {
         return transformer.transform(studentRepository.findByCandidateIsTrue(), StudentDTO.class);
+    }
+
+    @Override
+    public List<StudentDTO> retriveEliminated() {
+        return transformer.transform(studentRepository.findByElimnatedIsTrue(), StudentDTO.class);
+    }
+
+    @Override
+    public List<StudentDTO> getElminatedByGrade(Long grade) {
+         return transformer.transform(studentRepository.findByElimnatedIsTrueAndGradeGreaterThanEqual(grade), StudentDTO.class);
+    }
+
+    @Override
+    public List<StudentDTO> getCandidateByGrade(Long grade) {
+        return transformer.transform(studentRepository.findByCandidateIsTrueAndGradeGreaterThanEqual(grade), StudentDTO.class);
+    }
+
+    @Override
+    public List<StudentDTO> getAllByGrade(Long grade) {
+        return transformer.transform(studentRepository.findByGradeGreaterThanEqual(grade), StudentDTO.class);    }
+
+    @Override
+    public List<StudentDTO> getPartcipatedByGrade(Long grade) {
+        return transformer.transform(studentRepository.findByParticipatedIsTrueAndGradeGreaterThanEqual(grade), StudentDTO.class);    }
+
+    @Override
+    public List<StudentDTO> retriveAllSutdentsTookExam() {
+         return transformer.transform(studentRepository.findByGradeNotNull(), StudentDTO.class);
     }
 }

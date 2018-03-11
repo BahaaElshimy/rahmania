@@ -629,11 +629,60 @@
 
 
     rahmania.controller('correctionController', ['$scope', 'rahmaniaService', '$routeParams', '$compile', '$rootScope', function ($scope, rahmaniaService, $routeParams, compile, $rootScope) {
+
+        $scope.selectedTap="all";
+
+        var listIds =["all" ,"eliminated" ,"partcipated" ,"candidate"];
+        $scope.setBackgroundColor = function (id){
+            $scope.selectedTap= id;
+            for (var i = 0; i < listIds.length; i++) {
+                if (id == listIds[i]) {
+                    $("#" + id).css('background', '#025056');
+                } else {
+                    $("#" + listIds[i]).css('background', '#d7b872');
+                }
+            }
+        };
+
+        $scope.reloadSelectTap = function(){
+            switch ($scope.selectedTap){
+                case "eliminated":
+                    $scope.getEliminated();
+                    break;
+                case "partcipated":
+                    $scope.getPartcipated();
+                    break;
+                case "candidate":
+                    $scope.getCandidate();
+                    break;
+            }
+
+        };
+
+        $scope.getStudentsWithGradeEqualOrGreater = function (  grade) {
+            $scope.resetSelectStudents();
+            grade = $rootScope.bad(grade) ? -1 : grade;
+            rahmaniaService.getStudentsWithGradeEqualOrGreater($scope.selectedTap ,grade).success(function (data) {
+                    $scope.studentsCheckBoxes = [];
+                    $scope.students = data;
+                    for (var i = 0; i < $scope.students.length; i++) {
+                        $scope.studentsCheckBoxes[i] = false;
+                    }
+            });
+        }
+
         $scope.selectedStudents = [];
-        $scope.setAll = false;
-        $scope.studentsCheckBoxes = [];
+        $scope.resetSelectStudents =function (){
+            $scope.selectedStudents=[];
+            $scope.setAll =false
+        }
+        $scope.resetSelectStudents();
+        $scope.setBackgroundColor("all");
+
+
 
         $scope.loadStudents = function () {
+            $scope.resetSelectStudents();
             rahmaniaService.getAllStudents().success(function (data) {
                 $scope.studentsCheckBoxes = [];
                 $scope.students = data;
@@ -658,16 +707,14 @@
 
         $scope.checkAllStudents = function () {
             $scope.setAll = (!$scope.setAll);
-            if (!$scope.setAll) {
-                $scope.selectedStudents = [];
-            }
-            for (var i = 0; i < $scope.studentsCheckBoxes.length; i++) {
-                $scope.studentsCheckBoxes[i] = $scope.setAll;
-            }
-
+                for (var i = 0; i < $scope.studentsCheckBoxes.length; i++) {
+                    $scope.studentsCheckBoxes[i] = $scope.setAll;
+                    $scope.selectedStudents.push($scope.students[i].id);
+                }
         };
 
         $scope.getPartcipated = function () {
+            $scope.resetSelectStudents();
             rahmaniaService.getParticpated().success(function (data) {
                 $scope.studentsCheckBoxes = [];
                 $scope.students = data;
@@ -677,7 +724,20 @@
             });
 
         };
+        $scope.getEliminated= function () {
+            $scope.resetSelectStudents();
+            rahmaniaService.getEliminated().success(function (data) {
+                $scope.studentsCheckBoxes = [];
+                $scope.students = data;
+                for (var i = 0; i < $scope.students.length; i++) {
+                    $scope.studentsCheckBoxes[i] = false;
+                }
+            });
+
+        };
+
         $scope.getCandidate = function () {
+            $scope.resetSelectStudents();
             rahmaniaService.getCandidate().success(function (data) {
                 $scope.studentsCheckBoxes = [];
                 $scope.students = data;
@@ -688,35 +748,34 @@
 
         };
 
-        $scope.greaterThan = function (prop, val) {
-            return function (item) {
-                if ($rootScope.bad(val)) {
-                    return item[prop];
-                }
-
-                return item[prop] >= val;
-            }
-        };
 
         $scope.moveToParticipated = function () {
-            if ($scope.selectedStudents.length < 1 && !$scope.setAll) {
+            if ($scope.selectedStudents.length < 1 ) {
                 $("#chooseStudent").modal();
                 return;
             }
             rahmaniaService.moveToParticipated($scope.selectedStudents, $scope.setAll).success(function (data) {
                 $("#particpateModal").modal();
+                $scope.reloadSelectTap();
             });
+            $scope.selectedStudents=[];
+
+
         }
 
         $scope.elimenate = function () {
-            if ($scope.selectedStudents.length < 1) {
-                $("#elimnateModal").modal();
-                return;
-            }
-            rahmaniaService.elimenate($scope.selectedStudents).success(function (data) {
+            if ($scope.selectedStudents.length < 1 ) {
                 $("#chooseStudent").modal();
 
+                return;
+            }
+            rahmaniaService.elimenate($scope.selectedStudents , $scope.setAll).success(function (data) {
+                $("#elimnateModal").modal();
+                $scope.reloadSelectTap();
+
             });
+            $scope.selectedStudents=[];
+
         };
 
         $scope.endTest = function (){
@@ -727,14 +786,19 @@
         };
 
         $scope.moveToCandidate = function (){
-            if ($scope.selectedStudents.length < 1 && !$scope.setAll) {
+            if ($scope.selectedStudents.length < 1 ) {
                 $("#chooseStudent").modal();
                 return;
             }
             rahmaniaService.moveToCandidate($scope.selectedStudents, $scope.setAll).success(function (data) {
-                $("#particpateModal").modal();
+                $("#candidateModal").modal();
+                $scope.reloadSelectTap();
             });
+
+
         };
+
+
 
     }]);
 

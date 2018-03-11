@@ -16,15 +16,16 @@
 	<div class="formulaire">
 		<div id="statut">تصنيف</div>
 		<form >
-			<p>اختيار مشاركين بمجموع درجات <input style="text-align: center;" ng-model="searchGrade" type="text" /> فما فوق.</p>
+			<p>اختيار مشاركين بمجموع درجات <input style="text-align: center;" ng-model="searchGrade" type="text"  my-enter="getStudentsWithGradeEqualOrGreater( searchGrade)"/> فما فوق.</p>
 
 
 		</form>
 	</div>
 	<div id="menu1">
-		<a ng-click="loadStudents()">جميع المتسابقين</a>
-		<a ng-click="getPartcipated()">المشاركين</a>
-		<a ng-click="getCandidate()" style="background-color: #e0cb98;">المرشحين</a>
+		<a id="all" ng-click="setBackgroundColor('all');loadStudents()">جميع المتسابقين</a>
+		<a id="eliminated" ng-click="setBackgroundColor('eliminated');getEliminated()">المستبعدين</a>
+		<a id="partcipated" ng-click="setBackgroundColor('partcipated');getPartcipated()">المشاركين</a>
+		<a id="candidate" ng-click="setBackgroundColor('candidate');getCandidate()" style="background-color: #e0cb98;">المرشحين</a>
 	</div>
 	<div class="formulaire">
 		<form id="table">
@@ -50,7 +51,7 @@
 				</tr>
 				</thead>
 				<tbody>
-				<tr ng-repeat="student in students | filter: greaterThan('grade', searchGrade)">
+				<tr ng-repeat="student in students">
 					<td ><input type="checkbox" name="aa"ng-model="studentsCheckBoxes[$index]" ng-change="addStudentId($index)" /></td>
 					<td >{{student.name}}</td>
 					<td >{{student.grade}}</td>
@@ -86,13 +87,29 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="particpateModal" role="dialog">
+<div class="modal fade" id="candidateModal" role="dialog">
 	<div class="modal-dialog">
 
 		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-body">
 				<p>تم نقل الطلاب الى المرشحين بنجاح</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default"  data-dismiss="modal">إغلاق</button>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<div class="modal fade" id="particpateModal" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-body">
+				<p>تم نقل الطلاب الى المشاركين بنجاح</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default"  data-dismiss="modal">إغلاق</button>

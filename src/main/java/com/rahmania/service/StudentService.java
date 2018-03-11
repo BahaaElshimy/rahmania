@@ -1,6 +1,5 @@
 package com.rahmania.service;
 
-import com.rahmania.dto.SimpleStudentAnswerDTO;
 import com.rahmania.dto.StudentAnswersDTO;
 import com.rahmania.dto.StudentDTO;
 
@@ -16,7 +15,7 @@ public interface StudentService {
 
     List<StudentDTO> retriveAllSutdents();
 
-    void eleminateStudnts(List<Long> studentIs);
+    void eleminateStudnts(List<Long> studentIs, Boolean all);
 
     void moveToParticipate(List<Long> studentIs ,Boolean all);
 
@@ -32,4 +31,16 @@ public interface StudentService {
     void moveToCandidate(List<Long> studentIs, Boolean all);
 
     List<StudentDTO> retriveCandidate();
+
+    List<StudentDTO> retriveEliminated();
+
+    List<StudentDTO> getElminatedByGrade(Long grade);
+
+    List<StudentDTO> getCandidateByGrade(Long grade);
+
+    List<StudentDTO> getAllByGrade(Long grade);
+
+    List<StudentDTO> getPartcipatedByGrade(Long grade);
+
+    List<StudentDTO> retriveAllSutdentsTookExam();
 }

@@ -7,7 +7,7 @@
 
 					<p>
                         <label for="phone">رقم الجوال</label><span class="requried">*</span> : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="tel" ng-blur="isExist()" ng-model="req.mobileNumber" name="phone" id="phone" minlength="10" maxlength="10" required="" data-parsley-pattern="{{mobileNumber}}" data-parsley-error-message="رقم الجوال مكون من 10أرقام ويبدأ ب 05" />
+						<input type="tel" ng-blur="isExist()" ng-model="req.mobileNumber" name="phone" id="phone"  maxlength="10" required="" data-parsley-pattern="{{mobileNumberRegex}}" data-parsley-error-message="رقم الجوال مكون من 10أرقام ويبدأ ب 05" />
 						<br><span class="danger" ng-show="userExist">رقم الجوال مستخدم سابقا</span>
                     </p>
 					<p>
