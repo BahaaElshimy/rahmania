@@ -104,16 +104,16 @@
                             for (var i = 0; i < scope.item.question.length; i++) {
                                 if (scope.item.question[i] == "+") {
 
-                                    displayEmelent+= !$rootScope.bad(tempQuestion) ?' <div  class="col-md-2" style="float: right"><span>'+ tempQuestion + "</span></div>" :"";
+                                    displayEmelent+= !$rootScope.bad(tempQuestion) ?' <div   style="float: right"><span>'+ tempQuestion + "</span></div>" :"";
 
-                                    displayEmelent+="<div  class='co-l-md-2' style='float: right ;margin-bottom:5px;margin-right:5px'><input name='gap"+i+"' ng-model='item.parts["+partCount+"]'"+"   id='gap-"+scope.item.subjectId+"'   data-parsley-error-message='هذ الحقل مطلوب'  ng-required='true' style='padding:5px ;width: 250px' /></div>";
+                                    displayEmelent+="<div  class='co-l-md-2' style='float: right;margin-bottom:5px;margin-right:5px'><input name='gap"+i+"' ng-model='item.parts["+partCount+"]'"+"   id='gap-"+scope.item.subjectId+"'   data-parsley-error-message='هذ الحقل مطلوب'  ng-required='true' style='padding:5px ;width: 250px' /></div>";
                                     tempQuestion = "";
                                     partCount++;
                                 } else {
                                     tempQuestion += scope.item.question[i];
                                 }
                             }
-                            displayEmelent+= !$rootScope.bad(tempQuestion) ?' <div  class="col-md-2" style="float: right"><span>'+ tempQuestion + "</span></div></div></div>" :"</div></div>";
+                            displayEmelent+= !$rootScope.bad(tempQuestion) ?' <div  style="float: right"><span>'+ tempQuestion + "</span></div></div></div>'" :"</div></div>'";
                             iElem.append($compile(displayEmelent)(scope));
 
                         }
