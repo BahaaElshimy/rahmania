@@ -68,6 +68,7 @@ header{
 	height: 15px;
 	z-index: 99;
     position: relative;
+	margin-top: -14px !important;
 }
 section{
 	text-align: center;
@@ -87,9 +88,9 @@ section h2{
 	height: 280;
 }
 #menu{
-	margin: -5px auto;
 	text-align: center;
 	max-width: 10000px;
+	margin-top: -11px !important;
 }
 #menu a{
 	text-decoration: none;

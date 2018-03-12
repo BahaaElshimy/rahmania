@@ -2,7 +2,7 @@
 <div class="formulaire">
 
 
-        <div style="float: right ;margin-top: 30px">
+        <div style="margin-top: 30px">
 
             <div class="col-md-6" ng-if="!bad(image.imageName)">
                 <label style="color:black"> صورة الجوائز </label><br>
@@ -10,23 +10,23 @@
             </div>
 
             <div class="col-md-6" ng-show="bad(image.imageName)">
-            <input class="form-control"  type="file" file-model="file"id="imageUploader" placeholder="Upload File"    required data-parsley-error-message="من فضلك اختر فيديو"/>
+            <input class="form-control"  type="file" file-model = "file"id="imageUploader" placeholder="Upload File"    required data-parsley-error-message="من فضلك اختر فيديو"/>
+                <button type="button"class="standardButton" ng-click="doUploadImage()"> رفع </button>
             </div>
 
 
         </div>
 
 
+    <form id="addPrizfore" name="addPrizeform" novalidate  data-parsley-validate="" autocomplete="off"  style="float: right; margin-top: 70px">
 
-    <div ng-form="" id="addPrizfore" name="addPrizeform" novalidate  data-parsley-validate="" autocomplete="off"  style="float: right; margin-top: 70px">
 
-    <div id="table" style="margin-top: 70px">
 
-        <div class="form-group">
+
         <label style="color:black"> الجائزة </label><span class="requried">*</span>
         <input type="text" name="prize" ng-model="prize.description" ng-pattern-restrict="{{arabicOnly}}" required data-parsley-validate=""/>
         <span ng-show=" addPrizeform.prize.$error.required" class="danger" style="margin-left: 162px;">هذا الحقل مطلوب باللغة العربية </span>
-        </div>
+
 
 
 
@@ -34,16 +34,21 @@
         <button type="button" class="standardButton" ng-disabled="addPrizeform.$invalid" ng-show="!isAddPrize" ng-click="editPrize(prize)"> تعديل</button><br>
 
 
-</div>
-</div>
+</form>
+
+
+
+
+
+
+
 <div>
 
-    <form>
 
-        <div style="float: right">
-            <h3>جوائز المسابقة</h3>
-        <img style="width: 50%" ng-src="resources/image/competitionImage.jpg">
-        </div>
+
+            <img style="width: 50%" ng-src="{{'resources/image/'+image.imageName}}">
+
+    <h3>جوائز المسابقة</h3>
         <table class="table">
             <thead>
             <tr>
@@ -63,6 +68,10 @@
 
             </tbody>
         </table>
-    </form>
+
 </div>
+
+
+
+
 </div>

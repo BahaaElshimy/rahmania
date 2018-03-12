@@ -846,7 +846,6 @@
 
     rahmania.controller('prizesController', ['$scope', 'rahmaniaService', '$rootScope', '$http', function ($scope, rahmaniaService, $rootScope, $http) {
         $scope.isAddPrize = true;
-        $scope.file = null;
         $scope.doUploadImage = function () {
             var data = new FormData();
             data.append('file', $scope.file);
@@ -859,7 +858,6 @@
             }
             $http.post('api/settings/uploadPrizeImage', data, config).success(function () {
                 $scope.loadImage();
-                $scope.file=null;
             });
         }
 
@@ -912,7 +910,8 @@
             rahmaniaService.getImageName().success(function (data1) {
                 $scope.image =data1;
             });
-        }
+        };
+        $scope.loadImage();
 
         $(".attachmentsUpload input.file").change(function () {
             if ($("#imageUploader").val() == "") {
