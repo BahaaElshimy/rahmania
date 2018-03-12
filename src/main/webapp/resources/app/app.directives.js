@@ -63,7 +63,9 @@
                     post: function (scope, iElem, iAttrs) {
                         $timeout(function () {
                             iElem.on('click', '#fillEdit', function () {
-                                scope.prepareEditQuestion(scope.$index)
+                                $timeout(function (){
+                                    scope.prepareEditQuestion(scope.$index)
+                                },100);
                             });
                             iElem.on('click', '#fillRemove', function () {
                                 scope.removeQuestion(scope.item.id);

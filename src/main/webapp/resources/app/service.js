@@ -88,7 +88,7 @@
                 });
             },
             eidtQuestion: function (question) {
-                return $http.put("api/questions/multichoice/" + question.id, question);
+                return $http.put("api/questions/"+question.type+"/" + question.id, question);
             },
 
             login: function (request) {

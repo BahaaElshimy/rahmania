@@ -321,6 +321,8 @@
 
 
     rahmania.controller('registerController', ['$rootScope', '$scope', 'rahmaniaService', '$location', function ($rootScope, $scope, rahmaniaService, $location) {
+     $(".triangle").css( "margin-right", "17%");
+
 
         $scope.userExist = false;
         $scope.isExist = function () {
@@ -355,7 +357,7 @@
     }]);
 
     rahmania.controller('tokenController', ['$rootScope', '$scope', 'rahmaniaService', '$location', function ($rootScope, $scope, rahmaniaService, $location) {
-
+        $(".triangle").css( "margin-right", "55%");
 
         var validateTokenForm = $('#validateTokenForm').parsley();
         $('#validateTokenForm').parsley().on('form:validated', function () {
@@ -383,6 +385,7 @@
 
 
     rahmania.controller('confirmController', function () {
+        $(".triangle").css( "margin-right", "34%");
 
     });
 
@@ -599,12 +602,8 @@
 
         $scope.prepareEditQuestion = function (index) {
             $scope.isAddQuestion = false;
-            if ($rootScope.bad($scope.question.answers) || $scope.question.answers.length < 1)
-                $scope.type = "fillGap";
-            else
-                $scope.type = "multichoice";
-
             $scope.question = angular.copy($scope.questions[index]);
+            $scope.type = $scope.question.type;
         };
 
 
