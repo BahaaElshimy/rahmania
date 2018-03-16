@@ -2,11 +2,10 @@ package com.rahmania.service;
 
 import com.rahmania.dto.BaseResponse;
 import com.rahmania.dto.user.UserRegisterationDTO;
-import com.rahmania.entity.Users;
+import com.rahmania.entity.User;
 import com.rahmania.exception.RahmaniaException;
 import com.rahmania.security.SecurityService;
 import com.rahmania.service.user.UserService;
-import com.rahmania.sms.SMSSender;
 import com.rahmania.util.Transformer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,7 +45,7 @@ public class RegisterationServiceImpl implements RegisterationService {
         BaseResponse response = new BaseResponse();
         Objects.requireNonNull(session.getAttribute("user"));
         Objects.requireNonNull(session.getAttribute("password"));
-        Users user = userService.getUSer((String) session.getAttribute("user"));
+        User user = userService.getUSer((String) session.getAttribute("user"));
         if (user.getToken().equals(token)) {
             user.setActive(true);
             securityService.autologin(user.getMobileNumber(), (String) session.getAttribute("password"));

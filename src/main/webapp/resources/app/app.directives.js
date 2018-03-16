@@ -106,7 +106,7 @@
 
                                     displayEmelent+= !$rootScope.bad(tempQuestion) ?' <div   style="float: right"><span>'+ tempQuestion + "</span></div>" :"";
 
-                                    displayEmelent+="<div  class='co-l-md-2' style='float: right;margin-bottom:5px;margin-right:5px'><input name='gap"+i+"' ng-model='item.parts["+partCount+"]'"+"   id='gap-"+scope.item.subjectId+"'   data-parsley-error-message='هذ الحقل مطلوب'  ng-required='true' style='padding:5px ;width: 250px' /></div>";
+                                    displayEmelent+="<div  class='co-l-md-2' style='float: right;width: 250px !important;margin-bottom:5px;margin-right:5px'><input name='gap"+i+"' ng-model='item.parts["+partCount+"]'"+"   id='gap-"+scope.item.subjectId+"'   data-parsley-error-message='هذ الحقل مطلوب'  ng-required='true' style='padding:5px ;width: 250px' /></div>";
                                     tempQuestion = "";
                                     partCount++;
                                 } else {

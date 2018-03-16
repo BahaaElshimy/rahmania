@@ -4,13 +4,11 @@ package com.rahmania.entity;
 import org.joda.time.DateTime;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Inheritance(strategy =InheritanceType.JOINED)
-@Table(uniqueConstraints = { @UniqueConstraint(columnNames = {"mobileNumber"})})
-public  class Users extends AbstractEntity {
+@Table(name="rahmania_user")
+public  class User extends AbstractEntity {
 
     private String token;
 
@@ -28,7 +26,7 @@ public  class Users extends AbstractEntity {
     private String password;
 
     @ManyToOne
-    private Roles role ;
+    private Role role ;
 
     private DateTime lastForgetPassword;
 
@@ -56,11 +54,11 @@ public  class Users extends AbstractEntity {
         this.password = password;
     }
 
-    public Roles getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(Roles role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 

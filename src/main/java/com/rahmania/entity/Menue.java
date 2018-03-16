@@ -20,7 +20,7 @@ public class Menue  extends  AbstractEntity{
     private boolean disabled = false;
 
     @ManyToMany(mappedBy = "menueSet")
-    private Set<Roles> roleSet = new HashSet<>();
+    private Set<Role> roleSet = new HashSet<>();
     public String getName() {
         return name;
     }
@@ -37,11 +37,11 @@ public class Menue  extends  AbstractEntity{
         this.url = url;
     }
 
-    public Set<Roles> getRoleSet() {
+    public Set<Role> getRoleSet() {
         return roleSet;
     }
 
-    public void setRoleSet(Set<Roles> roleSet) {
+    public void setRoleSet(Set<Role> roleSet) {
         this.roleSet = roleSet;
     }
 

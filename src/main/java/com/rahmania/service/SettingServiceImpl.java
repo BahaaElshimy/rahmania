@@ -5,9 +5,8 @@ import com.rahmania.dto.user.ForgetPasswordDTO;
 import com.rahmania.entity.About;
 import com.rahmania.entity.Rule;
 import com.rahmania.entity.Prize;
-import com.rahmania.entity.Users;
+import com.rahmania.entity.User;
 import com.rahmania.exception.FieldErrorDTO;
-import com.rahmania.exception.RahmaniaException;
 import com.rahmania.model.AboutDTO;
 import com.rahmania.model.ConstraintDTO;
 import com.rahmania.model.PrizeDTO;
@@ -188,7 +187,7 @@ public class SettingServiceImpl implements SettingService {
 
     @Override
     public FieldErrorDTO changePassword(ChangePasswordDTO changePasswordDTO) {
-        Users user = userRepository.findByMobileNumber(SecurityHelper.getCurrentUser());
+        User user = userRepository.findByMobileNumber(SecurityHelper.getCurrentUser());
 
 
         if (bCryptPasswordEncoder.matches(changePasswordDTO.getOldPassword(), user.getPassword())) {
@@ -201,7 +200,7 @@ public class SettingServiceImpl implements SettingService {
 
     @Override
     public void forgetPassword(ForgetPasswordDTO forgetPasswordDTO) throws UnsupportedEncodingException {
-        Users user = userRepository.findByMobileNumber(forgetPasswordDTO.getMobileNumber());
+        User user = userRepository.findByMobileNumber(forgetPasswordDTO.getMobileNumber());
         Period diff = (Objects.nonNull(user) && Objects.nonNull(user.getLastForgetPassword())) ? new Period(user.getLastForgetPassword(), new DateTime()) : null;
         if (Objects.isNull(diff) || diff.getMinutes() > 5) {
             String password = generate() ;

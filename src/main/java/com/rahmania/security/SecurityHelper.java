@@ -1,5 +1,6 @@
 package com.rahmania.security;
 
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
@@ -10,6 +11,11 @@ public class SecurityHelper {
 
     public static String getCurrentUser(){
        return SecurityContextHolder.getContext().getAuthentication().getName();
+    }
+
+
+    public static boolean isAuthenticatedUser() {
+        return !(SecurityContextHolder.getContext().getAuthentication() instanceof AnonymousAuthenticationToken);
     }
 
 }

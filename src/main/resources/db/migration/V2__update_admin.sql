@@ -1,0 +1,1 @@
+update rahmania_user set mobile_number ='0533499567' , name ='سعيد بن ماضى الحضرمي' where id =1 ;

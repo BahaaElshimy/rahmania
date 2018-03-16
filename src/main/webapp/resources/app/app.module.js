@@ -131,7 +131,7 @@
                 templateUrl: 'resources/html/registred.html',
             })
             .when('/test', {
-                templateUrl: 'resources/html/test.html',
+                templateUrl: 'resources/html/studentHtml`/test.html',
                 controller: 'testController'
             })
             .when('/agreement', {
@@ -156,14 +156,14 @@
                 }
             })
             .when('/subjects', {
-                templateUrl: 'resources/html/studentSubjects.html',
+                templateUrl: 'resources/html/studentHtml/studentSubjects.html',
                 controller: 'studentSubjectController'
             })
             .when('/correct', {
-                templateUrl: 'resources/html/reponses.html',
+                templateUrl: 'resources/html/adminHtml/responses.html',
                 controller: 'correctionController'
             }).when('/studentAnswers/:id', {
-            templateUrl: 'resources/html/studentAnswers.html',
+            templateUrl: 'resources/html/adminHtml/studentAnswers.html',
             controller: 'studnetAnswerController'
         }).when('/editConstraint', {
             templateUrl: 'resources/adminHtml/editConstraint.html',

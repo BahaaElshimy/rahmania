@@ -5,4 +5,5 @@ package com.rahmania.util;
  */
 public interface AppConstants {
     String MULTI_CHOICE="multichoice";
+     String AnonymousRole = "anonymous";
 }

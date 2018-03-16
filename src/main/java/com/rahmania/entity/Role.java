@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-public class Roles extends AbstractEntity {
+@Table(name="rahmania_role")
+public class Role extends AbstractEntity {
 
     private String name;
 
