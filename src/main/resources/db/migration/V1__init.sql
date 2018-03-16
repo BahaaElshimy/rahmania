@@ -51,11 +51,11 @@ ALTER TABLE public.about OWNER TO postgres;
 --
 
 CREATE SEQUENCE public.about_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+START WITH 1
+INCREMENT BY 1
+NO MINVALUE
+NO MAXVALUE
+CACHE 1;
 
 
 ALTER TABLE public.about_id_seq OWNER TO postgres;
@@ -96,11 +96,11 @@ ALTER TABLE public.answer OWNER TO postgres;
 --
 
 CREATE SEQUENCE public.answer_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+START WITH 1
+INCREMENT BY 1
+NO MINVALUE
+NO MAXVALUE
+CACHE 1;
 
 
 ALTER TABLE public.answer_id_seq OWNER TO postgres;
@@ -146,11 +146,11 @@ ALTER TABLE public.menue OWNER TO postgres;
 --
 
 CREATE SEQUENCE public.menue_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+START WITH 1
+INCREMENT BY 1
+NO MINVALUE
+NO MAXVALUE
+CACHE 1;
 
 
 ALTER TABLE public.menue_id_seq OWNER TO postgres;
@@ -195,11 +195,11 @@ ALTER TABLE public.prize OWNER TO postgres;
 --
 
 CREATE SEQUENCE public.prize_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+START WITH 1
+INCREMENT BY 1
+NO MINVALUE
+NO MAXVALUE
+CACHE 1;
 
 
 ALTER TABLE public.prize_id_seq OWNER TO postgres;
@@ -234,11 +234,11 @@ ALTER TABLE public.question OWNER TO postgres;
 --
 
 CREATE SEQUENCE public.question_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+START WITH 1
+INCREMENT BY 1
+NO MINVALUE
+NO MAXVALUE
+CACHE 1;
 
 
 ALTER TABLE public.question_id_seq OWNER TO postgres;
@@ -269,11 +269,11 @@ ALTER TABLE public.rahmania_role OWNER TO postgres;
 --
 
 CREATE SEQUENCE public.rahmania_role_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+START WITH 1
+INCREMENT BY 1
+NO MINVALUE
+NO MAXVALUE
+CACHE 1;
 
 
 ALTER TABLE public.rahmania_role_id_seq OWNER TO postgres;
@@ -311,11 +311,11 @@ ALTER TABLE public.rahmania_user OWNER TO postgres;
 --
 
 CREATE SEQUENCE public.rahmania_user_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+START WITH 1
+INCREMENT BY 1
+NO MINVALUE
+NO MAXVALUE
+CACHE 1;
 
 
 ALTER TABLE public.rahmania_user_id_seq OWNER TO postgres;
@@ -358,11 +358,11 @@ ALTER TABLE public.rule OWNER TO postgres;
 --
 
 CREATE SEQUENCE public.rule_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+START WITH 1
+INCREMENT BY 1
+NO MINVALUE
+NO MAXVALUE
+CACHE 1;
 
 
 ALTER TABLE public.rule_id_seq OWNER TO postgres;
@@ -411,11 +411,11 @@ ALTER TABLE public.subject OWNER TO postgres;
 --
 
 CREATE SEQUENCE public.subject_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
+START WITH 1
+INCREMENT BY 1
+NO MINVALUE
+NO MAXVALUE
+CACHE 1;
 
 
 ALTER TABLE public.subject_id_seq OWNER TO postgres;
